@@ -66,12 +66,97 @@ public class SudokuUtilities {
             }
         }
 
+        //för att testa, ta bort sen
+        print(values);
+        values = randomSudokuMatrix(values);
+        print(values);
+
         return values;
+    }
+
+    public static void print(int[][][] values) { // ta bort sen
+        for (int i = 0; i < 2; i++) {
+            for (int row = 0; row < GRID_SIZE; row++) {
+                for (int col = 0; col < GRID_SIZE; col++) {
+                    System.out.print(values[row][col][i]);
+                }
+                System.out.println();
+            }
+            System.out.println("\n");
+        }
     }
 
     private static int convertCharToSudokuInt(char ch) {
         if (ch < '0' || ch > '9') throw new IllegalArgumentException("character " + ch);
         return ch - '0';
+    }
+
+    private static int[][][] randomSudokuMatrix(int[][][] values) {
+        int random = generateRandomNumber(3, 0);
+        switch (random) {
+            case 0:
+                break;
+            case 1: values = flipHorizontal(values);
+                break;
+            case 2: values = flipVertical(values);
+                break;
+            case 3: values = replaceInstances(values);
+                break;
+            default:
+            break;
+        }
+        return values;
+    }
+
+    private static int generateRandomNumber(int max, int min) {
+        return (int)Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    private static int[][][] flipHorizontal(int[][][] values) {
+        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];;
+        for (int col = 0; col < 4; col++) {
+            for (int row = 0; row < GRID_SIZE; row++) {
+                temp[0][0] = values[row][col];
+                values[row][col] = values[row][GRID_SIZE - col - 1];
+                values[row][GRID_SIZE - col - 1] = temp[0][0];
+            }
+        }
+        return values;
+    }
+
+    private static int[][][] flipVertical(int[][][] values) {
+        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];;
+        for (int row = 0; row < 4; row++) {
+            temp[0] = values[row];
+            values[row] = values[GRID_SIZE - row - 1];
+            values[GRID_SIZE - row - 1] = temp[0];
+        }
+        return values;
+    }
+
+    private static int[][][] replaceInstances(int[][][] values) {
+        int num1, num2, max = 9, min = 1;
+        num1 = generateRandomNumber(max, min);
+        num2 = generateRandomNumber(max, min);
+        while (num1 == num2) {
+            num2 = generateRandomNumber(max, min);
+        }
+        return switchNumbers(values, num1, num2);
+    }
+
+    private static int[][][] switchNumbers(int[][][] values, int num1, int num2) {
+        for (int i = 0; i < 2; i++) {
+            for (int row = 0; row < GRID_SIZE; row++) {
+                for (int col = 0; col < GRID_SIZE; col++) {
+                    if (values[row][col][i] == num1) {
+                        values[row][col][i] = num2;
+                    } else if (values[row][col][i] == num2) {
+                        values[row][col][i] = num1;
+                    }
+                }
+            }
+        }
+        return values;
     }
 
     private static final String easy =
