@@ -5,11 +5,6 @@ public class Square {
     private int selectedNumber;
     private final boolean changeable;
 
-    public Square(int correctNumber, boolean changeable) {
-        this.correctNumber = correctNumber;
-        this.changeable = changeable;
-    }
-
     public Square(int correctNumber, int selectedNumber, boolean changeable) {
         this.correctNumber = correctNumber;
         this.selectedNumber = selectedNumber;
