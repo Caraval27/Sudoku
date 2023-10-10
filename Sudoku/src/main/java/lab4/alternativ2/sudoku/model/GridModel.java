@@ -15,7 +15,10 @@ public class GridModel {
         Square[][] squaresCopy = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         for (int i = 0; i < SudokuUtilities.GRID_SIZE; i++) {
             for (int j = 0; j < SudokuUtilities.GRID_SIZE; j++) {
-                squaresCopy[i][j] = new Square(squares[i][j].getCorrectNumber(), squares[i][j].getSelectedNumber(), squares[i][j].isChangeable());
+                if (squaresCopy[i][j] != null) {
+                    Square square = squares[i][j];
+                    squaresCopy[i][j] = new Square(square.getCorrectNumber(), square.getSelectedNumber(), square.isChangeable());
+                }
             }
         }
         return squaresCopy;
