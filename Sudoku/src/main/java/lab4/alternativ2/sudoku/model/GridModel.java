@@ -3,7 +3,7 @@ package lab4.alternativ2.sudoku.model;
 import java.util.Arrays;
 
 public class GridModel {
-    private Square[][] squares;
+    private final Square[][] squares;
     private SudokuUtilities.SudokuLevel level;
 
     public GridModel(SudokuUtilities.SudokuLevel level) {
@@ -12,7 +12,13 @@ public class GridModel {
     }
 
     public Square[][] getSquares() {
-        return squares;
+        Square[][] squaresCopy = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[i].length; j++) {
+                squaresCopy[i][j] = new Square(squares[i][j].getCorrectNumber(), squares[i][j].getSelectedNumber(), squares[i][j].isChangeable());
+            }
+        }
+        return squaresCopy;
     }
 
     public SudokuUtilities.SudokuLevel getLevel() {
@@ -33,6 +39,6 @@ public class GridModel {
 
     @Override
     public String toString() {
-        return "GridModel [" + "Squares : " + Arrays.toString(squares) + ", level : " + level + "]";
+        return "GridModel [squares: " + Arrays.toString(squares) + ", level: " + level + "]";
     }
 }

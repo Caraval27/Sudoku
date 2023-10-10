@@ -10,6 +10,12 @@ public class Square {
         this.changeable = changeable;
     }
 
+    public Square(int correctNumber, int selectedNumber, boolean changeable) {
+        this.correctNumber = correctNumber;
+        this.selectedNumber = selectedNumber;
+        this.changeable = changeable;
+    }
+
     public int getCorrectNumber() {
         return correctNumber;
     }
@@ -32,7 +38,6 @@ public class Square {
 
     @Override
     public String toString() {
-        return "Square{ correctNumber=" + correctNumber + ", selectedNumber=" + selectedNumber + ", changeable=" +
-                changeable + '}';
+        return "Square [correctNumber: " + correctNumber + ", selectedNumber: " + selectedNumber + ", changeable: " + changeable + ']';
     }
 }
