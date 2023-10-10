@@ -11,7 +11,7 @@ public class GridModel {
         this.level = level;
     }
 
-    public Square[][] getSquares() {
+    private Square[][] copySquares(Square[][] squares) {
         Square[][] squaresCopy = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         for (int i = 0; i < SudokuUtilities.GRID_SIZE; i++) {
             for (int j = 0; j < SudokuUtilities.GRID_SIZE; j++) {
@@ -22,6 +22,10 @@ public class GridModel {
             }
         }
         return squaresCopy;
+    }
+
+    public Square[][] getSquares() {
+        return copySquares(squares);
     }
 
     public SudokuUtilities.SudokuLevel getLevel() {
