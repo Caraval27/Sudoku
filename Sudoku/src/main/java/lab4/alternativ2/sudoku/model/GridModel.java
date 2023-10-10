@@ -103,6 +103,14 @@ public class GridModel {
 
     @Override
     public String toString() {
-        return "GridModel [squares: " + Arrays.toString(squares) + ", level: " + level + "]";
+        StringBuilder text = new StringBuilder("GridModel [squares:\n");
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
+                text.append(squares[row][column]).append(" ");
+            }
+            text.append("\n");
+        }
+        text.append(", level: ").append(level).append("]");
+        return text.toString();
     }
 }
