@@ -69,19 +69,13 @@ public class GridModel {
         }
     }
 
-    private int[] randomPosition() {
-        return new int[] {(int) (Math.random() * 9) + 1, (int) (Math.random() * 9) + 1};
-    }
-
     public void setCorrectSquare() {
-        int[] position;
         int row;
         int column;
         Square square;
         do {
-            position = randomPosition();
-            row = position[0];
-            column = position[1];
+            row = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
+            column = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
             square = squares[row][column];
         } while (!square.isChangeable());
         setSquare(square.getCorrectNumber(), row, column);

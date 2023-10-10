@@ -7,6 +7,8 @@ public class SudokuUtilities {
     public static final int GRID_SIZE = 9;
     public static final int SECTIONS_PER_ROW = 3;
     public static final int SECTION_SIZE = 3;
+    public static final int MAX_POSITION = 8;
+    public static final int MIN_POSITION = 0;
 
     /**
      * Create a 3-dimensional matrix with initial values and solution in Sudoku.
@@ -108,7 +110,7 @@ public class SudokuUtilities {
         return values;
     }
 
-    private static int generateRandomNumber(int max, int min) {
+    public static int generateRandomNumber(int max, int min) {
         return (int)Math.floor(Math.random() * (max - min + 1) + min);
     }
 
