@@ -27,10 +27,6 @@ public class Square {
         this.selectedNumber = selectedNumber;
     }
 
-    public void clearSelectedNumber() {
-        selectedNumber = 0;
-    }
-
     @Override
     public String toString() {
         return "Square [correctNumber: " + correctNumber + ", selectedNumber: " + selectedNumber + ", changeable: " + changeable + ']';

@@ -46,7 +46,7 @@ public class GridModel {
 
     public void setLevel(SudokuUtilities.SudokuLevel level) {
         this.level = level;
-        
+
         initNewGame();
     }
 
