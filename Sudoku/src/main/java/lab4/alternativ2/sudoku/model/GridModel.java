@@ -15,8 +15,8 @@ public class GridModel {
         Square[][] squaresCopy = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         for (int i = 0; i < SudokuUtilities.GRID_SIZE; i++) {
             for (int j = 0; j < SudokuUtilities.GRID_SIZE; j++) {
-                if (squaresCopy[i][j] != null) {
-                    Square square = squares[i][j];
+                Square square = squares[i][j];
+                if (square != null) {
                     squaresCopy[i][j] = new Square(square.getCorrectNumber(), square.getSelectedNumber(), square.isChangeable());
                 }
             }
