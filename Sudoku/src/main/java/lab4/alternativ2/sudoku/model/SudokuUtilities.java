@@ -6,7 +6,6 @@ public class SudokuUtilities {
 
     public static final int GRID_SIZE = 9;
     public static final int NR_OF_GRIDS = 2;
-
     public static final int SECTIONS_PER_ROW = 3;
     public static final int SECTION_SIZE = 3;
     public static final int MAX_POSITION = 8;
