@@ -1,6 +1,6 @@
 package lab4.alternativ2.sudoku.view;
 
-import lab4.alternativ2.sudoku.model.SudokuUtilities;
+import lab4.alternativ2.sudoku.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
@@ -10,8 +10,10 @@ import javafx.scene.text.FontWeight;
 public class GridView {
     private Label[][] numberSquares; // the tiles/squares to show in the ui grid
     private TilePane numberPane;
+    private GridModel model;
 
-    public GridView() {
+    public GridView(GridModel model) {
+        this.model = model;
         numberSquares = new Label[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         initNumberSquares();
         // ...
@@ -30,17 +32,31 @@ public class GridView {
 
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int col = 0; col < SudokuUtilities.GRID_SIZE; col++) {
-                Label tile = new Label(/* add number, or "", to display */); // data from model
+                Label tile = new Label(squareNumberToString(row, col)); // data from model
                 tile.setPrefWidth(32);
                 tile.setPrefHeight(32);
                 tile.setFont(font);
                 tile.setAlignment(Pos.CENTER);
                 tile.setStyle("-fx-border-color: black; -fx-border-width: 0.5px;"); // css style
-                tile.setOnMouseClicked(tileClickHandler); // add your custom event handler
+                //tile.setOnMouseClicked(tileClickHandler); // add your custom event handler
                 // add new tile to grid
                 numberSquares[row][col] = tile;
             }
         }
+    }
+
+    private String squareNumberToString(int row, int column) {
+        String stringNumber;
+        Square[][] squares = model.getSquares();
+        int number = squares[row][column].getSelectedNumber();
+
+        if (number == 0) {
+            stringNumber = " ";
+        } else {
+            stringNumber = String.valueOf(number);
+        }
+
+        return stringNumber;
     }
 
     private final TilePane makeNumberPane() {
