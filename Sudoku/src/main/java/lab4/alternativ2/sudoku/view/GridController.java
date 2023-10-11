@@ -40,8 +40,4 @@ public class GridController {
     public void handleStartOver() {
         model.clearSquares();
     }
-
-    public void handleGameRules() {
-
-    }
 }
