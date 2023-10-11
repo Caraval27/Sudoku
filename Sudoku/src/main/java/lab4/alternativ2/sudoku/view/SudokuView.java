@@ -10,20 +10,28 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import lab4.alternativ2.sudoku.model.GridModel;
 
-public class SudokuView extends VBox { // kanske BorderPane?
+public class SudokuView {
     private final GridModel model;
     private VBox rootPane;
     private MenuBar menuBar;
-    private BorderPane gamePane;
+    private BorderPane borderPane;
     private GridView gridView;
 
     public SudokuView(GridModel model) {
         this.model = model;
+        gridView = new GridView();
+        borderPane = new BorderPane();
+        borderPane.setCenter(gridView.getNumberPane());
         GridController gridController = new GridController(model, this);
+
         //initView();
 
         createMenuBar(gridController);
         //createButtons(gridController);
+    }
+
+    public BorderPane getBorderPane() {
+        return borderPane;
     }
 
     public MenuBar getMenuBar() {
