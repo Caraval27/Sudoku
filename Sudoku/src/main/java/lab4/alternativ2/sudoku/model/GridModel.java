@@ -94,7 +94,7 @@ public class GridModel {
         return true;
     }
 
-    public static String getRules() {
+    public String getRules() {
         String rules = "Rule 1: Each row and column must contain the numbers 1 to 9, without repetitions.\n";
         rules += "Rule 2: The digits can only occur once per block (the 9 3x3 blocks in the 9x9 grid).\n";
         rules += "Rule 3: The sum of every single row, column and 3x3 block must equal 45.\n";
