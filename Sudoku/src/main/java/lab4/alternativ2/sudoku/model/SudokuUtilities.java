@@ -5,6 +5,8 @@ public class SudokuUtilities {
     public enum SudokuLevel {EASY, MEDIUM, HARD}
 
     public static final int GRID_SIZE = 9;
+    public static final int NR_OF_GRIDS = 2;
+
     public static final int SECTIONS_PER_ROW = 3;
     public static final int SECTION_SIZE = 3;
     public static final int MAX_POSITION = 8;
@@ -24,7 +26,7 @@ public class SudokuUtilities {
      */
     public static int[][][] generateSudokuMatrix(SudokuLevel level) {
         String representationString;
-        int[][][] numbers = new int[GRID_SIZE][GRID_SIZE][2];
+        int[][][] numbers = new int[GRID_SIZE][GRID_SIZE][NR_OF_GRIDS];
         representationString = switch (level) {
             case EASY -> easy;
             case MEDIUM -> medium;
@@ -54,32 +56,26 @@ public class SudokuUtilities {
      */
     /*package private*/
     static void convertStringToIntMatrix(int[][][] numbers, String stringRepresentation) {
-        if (stringRepresentation.length() != GRID_SIZE * GRID_SIZE * 2)
+        if (stringRepresentation.length() != GRID_SIZE * GRID_SIZE * NR_OF_GRIDS)
             throw new IllegalArgumentException("representation length " + stringRepresentation.length());
 
         char[] charRepresentation = stringRepresentation.toCharArray();
-
         int charIndex = 0;
-        // initial numbers
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
-                numbers[row][col][0] = convertCharToSudokuInt(charRepresentation[charIndex++]);
-            }
-        }
 
-        // solution numbers
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
-                numbers[row][col][1] = convertCharToSudokuInt(charRepresentation[charIndex++]);
+        for (int grid = 0; grid < NR_OF_GRIDS; grid++) {
+            for (int row = 0; row < GRID_SIZE; row++) {
+                for (int column = 0; column < GRID_SIZE; column++) {
+                    numbers[row][column][grid] = convertCharToSudokuInt(charRepresentation[charIndex++]);
+                }
             }
         }
     }
 
     public static void print(int[][][] numbers) { // ta bort sen
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < NR_OF_GRIDS; i++) {
             for (int row = 0; row < GRID_SIZE; row++) {
-                for (int col = 0; col < GRID_SIZE; col++) {
-                    System.out.print(numbers[row][col][i]);
+                for (int column = 0; column < GRID_SIZE; column++) {
+                    System.out.print(numbers[row][column][i]);
                 }
                 System.out.println();
             }
@@ -94,40 +90,41 @@ public class SudokuUtilities {
 
     private static void randomSudokuMatrix(int[][][] numbers) {
         int random = generateRandomNumber(3, 0);
+        random = 2;
         switch (random) {
             case 0 -> {}
-            case 1 -> flipHorizontal(numbers);
-            case 2 -> flipVertical(numbers);
-            case 3 -> replaceInstances(numbers);
-            default -> replaceInstances(numbers);
+            case 1 -> flipNumbersHorizontal(numbers);
+            case 2 -> flipNumbersVertical(numbers);
+            case 3 -> replaceNumbers(numbers);
+            default -> replaceNumbers(numbers);
         }
     }
 
     public static int generateRandomNumber(int max, int min) {
-        return (int)Math.floor(Math.random() * (max - min + 1) + min);
+        return (int) (Math.random() * (max - min + 1) + min);
     }
 
-    private static void flipHorizontal(int[][][] numbers) {
-        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];
-        for (int col = 0; col < 4; col++) {
+    private static void flipNumbersHorizontal(int[][][] numbers) {
+        int[] temp;
+        for (int column = 0; column < MAX_POSITION / 2; column++) {
             for (int row = 0; row < GRID_SIZE; row++) {
-                temp[0][0] = numbers[row][col];
-                numbers[row][col] = numbers[row][GRID_SIZE - col - 1];
-                numbers[row][GRID_SIZE - col - 1] = temp[0][0];
+                temp = numbers[row][column];
+                numbers[row][column] = numbers[row][GRID_SIZE - column - 1];
+                numbers[row][GRID_SIZE - column - 1] = temp;
             }
         }
     }
 
-    private static void flipVertical(int[][][] numbers) {
-        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];
-        for (int row = 0; row < 4; row++) {
-            temp[0] = numbers[row];
+    private static void flipNumbersVertical(int[][][] numbers) {
+        int[][] temp;
+        for (int row = 0; row < MAX_POSITION / 2; row++) {
+            temp = numbers[row];
             numbers[row] = numbers[GRID_SIZE - row - 1];
-            numbers[GRID_SIZE - row - 1] = temp[0];
+            numbers[GRID_SIZE - row - 1] = temp;
         }
     }
 
-    private static void replaceInstances(int[][][] numbers) {
+    private static void replaceNumbers(int[][][] numbers) {
         int num1, num2;
         num1 = generateRandomNumber(MAX_NUMBER, MIN_NUMBER);
         num2 = generateRandomNumber(MAX_NUMBER , MIN_NUMBER);
@@ -138,13 +135,13 @@ public class SudokuUtilities {
     }
 
     private static void switchNumbers(int[][][] numbers, int num1, int num2) {
-        for (int i = 0; i < 2; i++) {
+        for (int grid = 0; grid < NR_OF_GRIDS; grid++) {
             for (int row = 0; row < GRID_SIZE; row++) {
-                for (int col = 0; col < GRID_SIZE; col++) {
-                    if (numbers[row][col][i] == num1) {
-                        numbers[row][col][i] = num2;
-                    } else if (numbers[row][col][i] == num2) {
-                        numbers[row][col][i] = num1;
+                for (int column = 0; column < GRID_SIZE; column++) {
+                    if (numbers[row][column][grid] == num1) {
+                        numbers[row][column][grid] = num2;
+                    } else if (numbers[row][column][grid] == num2) {
+                        numbers[row][column][grid] = num1;
                     }
                 }
             }
