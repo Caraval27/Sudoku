@@ -2,6 +2,7 @@ package lab4.alternativ2.sudoku.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -117,7 +118,11 @@ public class SudokuView extends VBox { // kanske BorderPane?
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleGameRules();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Help");
+                alert.setHeaderText("Game Rules");
+                alert.setContentText(model.getRules());
+                alert.show();
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);
