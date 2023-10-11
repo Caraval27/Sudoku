@@ -89,7 +89,6 @@ public class SudokuUtilities {
 
     private static void randomSudokuMatrix(int[][][] numbers) {
         int random = generateRandomNumber(3, 0);
-        random = 2;
         switch (random) {
             case 0 -> {}
             case 1 -> flipNumbersHorizontal(numbers);
