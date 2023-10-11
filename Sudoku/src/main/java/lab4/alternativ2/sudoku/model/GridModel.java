@@ -9,6 +9,7 @@ public class GridModel {
     public GridModel() {
         squares = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         level = SudokuUtilities.SudokuLevel.MEDIUM;
+        initNewGame();
     }
 
     private Square[][] copySquares(Square[][] squares) {
