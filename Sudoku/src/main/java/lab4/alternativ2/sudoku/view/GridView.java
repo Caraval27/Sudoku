@@ -26,6 +26,14 @@ public class GridView {
         return numberPane;
     }
 
+    public void updateGridView() {
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
+                numberSquares[row][column].setText(squareNumberToString(row, column));
+            }
+        }
+    }
+
     // called by constructor (only)
     private final void initNumberSquares() {
         Font font = Font.font("Monospaced", FontWeight.NORMAL, 20);
