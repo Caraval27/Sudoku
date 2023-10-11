@@ -1,6 +1,5 @@
 package lab4.alternativ2.sudoku.view;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -8,18 +7,22 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import lab4.alternativ2.sudoku.model.GridModel;
 
-public class SudokuView extends Application {
-    public VBox rootPane;
-    public MenuBar menuBar;
-    public BorderPane gamePane;
-    public GridView gridView;
-    public GridController gridController;
+public class SudokuView extends VBox { // kanske BorderPane?
+    private final GridModel model;
+    private VBox rootPane;
+    private MenuBar menuBar;
+    private BorderPane gamePane;
+    private GridView gridView;
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    public SudokuView(GridModel model) {
+        this.model = model;
+        GridController gridController = new GridController(model, this);
+        //initView();
 
+        createMenuBar(gridController);
+        //createButtons(gridController);
     }
 
     public MenuBar getMenuBar() {
@@ -35,20 +38,18 @@ public class SudokuView extends Application {
         EventHandler<ActionEvent> loadGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleLoadGame();
             }
         };
         loadGameItem.addEventHandler(ActionEvent.ACTION, loadGameHandler);
-        fileMenu.getItems().add(loadGameItem);
 
         EventHandler<ActionEvent> saveGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleSaveGame();
             }
         };
         saveGameItem.addEventHandler(ActionEvent.ACTION, saveGameHandler);
-        fileMenu.getItems().add(saveGameItem);
 
         EventHandler<ActionEvent> exitHandler = new EventHandler<ActionEvent>() {
             @Override
@@ -57,29 +58,49 @@ public class SudokuView extends Application {
             }
         };
         exitItem.addEventHandler(ActionEvent.ACTION, exitHandler);
-        fileMenu.getItems().add(exitItem);
+        fileMenu.getItems().addAll(loadGameItem, saveGameItem, exitItem);
 
         Menu gameMenu = new Menu("Game");
         MenuItem newGameItem = new MenuItem("New game");
-        MenuItem selectNewLevelItem = new MenuItem("Select new level");
+        Menu selectNewLevelMenu = new Menu("Select new level");
+        MenuItem easyLevelItem = new MenuItem("Easy");
+        MenuItem mediumLevelItem = new MenuItem("Medium");
+        MenuItem hardLevelItem = new MenuItem("Hard");
 
         EventHandler<ActionEvent> newGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleNewGame();
             }
         };
         newGameItem.addEventHandler(ActionEvent.ACTION, newGameHandler);
-        gameMenu.getItems().add(newGameItem);
 
-        EventHandler<ActionEvent> selectNewLevelHandler = new EventHandler<ActionEvent>() {
+        EventHandler<ActionEvent> easyLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleNewLevelEasy();
             }
         };
-        selectNewLevelItem.addEventHandler(ActionEvent.ACTION, selectNewLevelHandler);
-        gameMenu.getItems().add(selectNewLevelItem);
+        easyLevelItem.addEventHandler(ActionEvent.ACTION, easyLevelHandler);
+
+        EventHandler<ActionEvent> mediumLevelHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNewLevelMedium();
+            }
+        };
+        mediumLevelItem.addEventHandler(ActionEvent.ACTION, mediumLevelHandler);
+
+        EventHandler<ActionEvent> hardLevelHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNewLevelHard();
+            }
+        };
+        hardLevelItem.addEventHandler(ActionEvent.ACTION, hardLevelHandler);
+
+        selectNewLevelMenu.getItems().addAll(easyLevelItem, mediumLevelItem, hardLevelItem);
+        gameMenu.getItems().addAll(newGameItem, selectNewLevelMenu);
 
         Menu helpMenu = new Menu("Help");
         MenuItem startOverItem = new MenuItem("Start over");
@@ -88,20 +109,19 @@ public class SudokuView extends Application {
         EventHandler<ActionEvent> startOverHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleStartOver();
             }
         };
         startOverItem.addEventHandler(ActionEvent.ACTION, startOverHandler);
-        helpMenu.getItems().add(startOverItem);
 
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // controller
+                gridController.handleGameRules();
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);
-        helpMenu.getItems().add(gameRulesItem);
+        helpMenu.getItems().addAll(startOverItem, gameRulesItem);
 
         menuBar = new MenuBar();
         menuBar.getMenus().addAll(fileMenu, gameMenu, helpMenu);
