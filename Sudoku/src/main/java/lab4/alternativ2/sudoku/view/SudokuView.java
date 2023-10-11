@@ -38,6 +38,14 @@ public class SudokuView {
         return this.menuBar;
     }
 
+    private void showAlert(String message, String title, String header) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.show();
+    }
+
     private void createMenuBar(GridController gridController) {
         Menu fileMenu = new Menu("File");
         MenuItem loadGameItem = new MenuItem("Load game");
@@ -126,11 +134,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Help");
-                alert.setHeaderText("Game Rules");
-                alert.setContentText(model.getRules());
-                alert.show();
+                showAlert(model.getRules(), "Help", "Game Rules");
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);
