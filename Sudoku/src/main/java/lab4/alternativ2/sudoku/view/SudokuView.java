@@ -19,10 +19,10 @@ public class SudokuView {
 
     public SudokuView(GridModel model) {
         this.model = model;
-        gridView = new GridView();
+        gridView = new GridView(model);
         borderPane = new BorderPane();
         borderPane.setCenter(gridView.getNumberPane());
-        GridController gridController = new GridController(model, this);
+        GridController gridController = new GridController(this.model, this, gridView);
 
         //initView();
 
