@@ -9,6 +9,8 @@ public class SudokuUtilities {
     public static final int SECTION_SIZE = 3;
     public static final int MAX_POSITION = 8;
     public static final int MIN_POSITION = 0;
+    public static final int MAX_NUMBER = 9;
+    public static final int MIN_NUMBER = 1;
 
     /**
      * Create a 3-dimensional matrix with initial values and solution in Sudoku.
@@ -22,65 +24,62 @@ public class SudokuUtilities {
      */
     public static int[][][] generateSudokuMatrix(SudokuLevel level) {
         String representationString;
-        switch (level) {
-            case EASY: representationString = easy; break;
-            case MEDIUM: representationString = medium; break;
-            case HARD: representationString = hard; break;
-            default: representationString = medium;
-        }
-        return convertStringToIntMatrix(representationString);
+        int[][][] numbers = new int[GRID_SIZE][GRID_SIZE][2];
+        representationString = switch (level) {
+            case EASY -> easy;
+            case MEDIUM -> medium;
+            case HARD -> hard;
+            default -> medium;
+        };
+
+        convertStringToIntMatrix(numbers, representationString);
+        print(numbers); // ta bort
+        randomSudokuMatrix(numbers);
+        print(numbers); // ta bort
+
+        return numbers;
     }
 
     /**
-     * Create a 3-dimensional matrix with initial values and solution in Sudoku.
+     * Create a 3-dimensional matrix with initial numbers and solution in Sudoku.
      *
      * @param stringRepresentation A string of 2*81 characters, 0-9. The first 81 characters represents
-     *                             the initial values, '0' representing an empty cell.
+     *                             the initial numbers, '0' representing an empty cell.
      *                             The following 81 characters represents the solution.
-     * @return A 3-dimensional int matrix.
-     * [row][col][0] represents the initial values, zero representing an empty cell.
+     * Fills A 3-dimensional int matrix.
+     * [row][col][0] represents the initial numbers, zero representing an empty cell.
      * [row][col][1] represents the solution.
      * @throws IllegalArgumentException if the length of stringRepresentation is not 2*81 characters and
      *                                  for characters other than '0'-'9'.
      */
     /*package private*/
-    static int[][][] convertStringToIntMatrix(String stringRepresentation) {
+    static void convertStringToIntMatrix(int[][][] numbers, String stringRepresentation) {
         if (stringRepresentation.length() != GRID_SIZE * GRID_SIZE * 2)
             throw new IllegalArgumentException("representation length " + stringRepresentation.length());
 
-        int[][][] values = new int[GRID_SIZE][GRID_SIZE][2];
         char[] charRepresentation = stringRepresentation.toCharArray();
 
         int charIndex = 0;
-        // initial values
+        // initial numbers
         for (int row = 0; row < GRID_SIZE; row++) {
             for (int col = 0; col < GRID_SIZE; col++) {
-                values[row][col][0] =
-                        convertCharToSudokuInt(charRepresentation[charIndex++]);
+                numbers[row][col][0] = convertCharToSudokuInt(charRepresentation[charIndex++]);
             }
         }
 
-        // solution values
+        // solution numbers
         for (int row = 0; row < GRID_SIZE; row++) {
             for (int col = 0; col < GRID_SIZE; col++) {
-                values[row][col][1] =
-                        convertCharToSudokuInt(charRepresentation[charIndex++]);
+                numbers[row][col][1] = convertCharToSudokuInt(charRepresentation[charIndex++]);
             }
         }
-
-        //för att testa, ta bort sen
-        print(values);
-        values = randomSudokuMatrix(values);
-        print(values);
-
-        return values;
     }
 
-    public static void print(int[][][] values) { // ta bort sen
+    public static void print(int[][][] numbers) { // ta bort sen
         for (int i = 0; i < 2; i++) {
             for (int row = 0; row < GRID_SIZE; row++) {
                 for (int col = 0; col < GRID_SIZE; col++) {
-                    System.out.print(values[row][col][i]);
+                    System.out.print(numbers[row][col][i]);
                 }
                 System.out.println();
             }
@@ -93,72 +92,63 @@ public class SudokuUtilities {
         return ch - '0';
     }
 
-    private static int[][][] randomSudokuMatrix(int[][][] values) {
+    private static void randomSudokuMatrix(int[][][] numbers) {
         int random = generateRandomNumber(3, 0);
         switch (random) {
-            case 0:
-                break;
-            case 1: values = flipHorizontal(values);
-                break;
-            case 2: values = flipVertical(values);
-                break;
-            case 3: values = replaceInstances(values);
-                break;
-            default:
-            break;
+            case 0 -> {}
+            case 1 -> flipHorizontal(numbers);
+            case 2 -> flipVertical(numbers);
+            case 3 -> replaceInstances(numbers);
+            default -> replaceInstances(numbers);
         }
-        return values;
     }
 
     public static int generateRandomNumber(int max, int min) {
         return (int)Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    private static int[][][] flipHorizontal(int[][][] values) {
-        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];;
+    private static void flipHorizontal(int[][][] numbers) {
+        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];
         for (int col = 0; col < 4; col++) {
             for (int row = 0; row < GRID_SIZE; row++) {
-                temp[0][0] = values[row][col];
-                values[row][col] = values[row][GRID_SIZE - col - 1];
-                values[row][GRID_SIZE - col - 1] = temp[0][0];
+                temp[0][0] = numbers[row][col];
+                numbers[row][col] = numbers[row][GRID_SIZE - col - 1];
+                numbers[row][GRID_SIZE - col - 1] = temp[0][0];
             }
         }
-        return values;
     }
 
-    private static int[][][] flipVertical(int[][][] values) {
-        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];;
+    private static void flipVertical(int[][][] numbers) {
+        int[][][] temp = new int[GRID_SIZE][GRID_SIZE][2];
         for (int row = 0; row < 4; row++) {
-            temp[0] = values[row];
-            values[row] = values[GRID_SIZE - row - 1];
-            values[GRID_SIZE - row - 1] = temp[0];
+            temp[0] = numbers[row];
+            numbers[row] = numbers[GRID_SIZE - row - 1];
+            numbers[GRID_SIZE - row - 1] = temp[0];
         }
-        return values;
     }
 
-    private static int[][][] replaceInstances(int[][][] values) {
-        int num1, num2, max = 9, min = 1;
-        num1 = generateRandomNumber(max, min);
-        num2 = generateRandomNumber(max, min);
+    private static void replaceInstances(int[][][] numbers) {
+        int num1, num2;
+        num1 = generateRandomNumber(MAX_NUMBER, MIN_NUMBER);
+        num2 = generateRandomNumber(MAX_NUMBER , MIN_NUMBER);
         while (num1 == num2) {
-            num2 = generateRandomNumber(max, min);
+            num2 = generateRandomNumber(MAX_NUMBER, MIN_NUMBER);
         }
-        return switchNumbers(values, num1, num2);
+        switchNumbers(numbers, num1, num2);
     }
 
-    private static int[][][] switchNumbers(int[][][] values, int num1, int num2) {
+    private static void switchNumbers(int[][][] numbers, int num1, int num2) {
         for (int i = 0; i < 2; i++) {
             for (int row = 0; row < GRID_SIZE; row++) {
                 for (int col = 0; col < GRID_SIZE; col++) {
-                    if (values[row][col][i] == num1) {
-                        values[row][col][i] = num2;
-                    } else if (values[row][col][i] == num2) {
-                        values[row][col][i] = num1;
+                    if (numbers[row][col][i] == num1) {
+                        numbers[row][col][i] = num2;
+                    } else if (numbers[row][col][i] == num2) {
+                        numbers[row][col][i] = num1;
                     }
                 }
             }
         }
-        return values;
     }
 
     private static final String easy =
@@ -170,7 +160,7 @@ public class SudokuUtilities {
                     "300100000" +
                     "039000408" +
                     "650800030" +
-                    "000403260" + // solution values after this substring
+                    "000403260" + // solution numbers after this substring
                     "583914672" +
                     "712386954" +
                     "946752183" +
