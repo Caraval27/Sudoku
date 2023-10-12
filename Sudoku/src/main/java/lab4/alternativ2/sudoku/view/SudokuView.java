@@ -38,8 +38,8 @@ public class SudokuView {
         return this.menuBar;
     }
 
-    private void showAlert(String message, String title, String header) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    public void showAlert(Alert.AlertType type, String title, String header, String message) {
+        Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(message);
@@ -134,7 +134,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showAlert(model.getRules(), "Help", "Game Rules");
+                showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);

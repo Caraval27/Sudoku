@@ -1,6 +1,7 @@
 package lab4.alternativ2.sudoku.view;
 
 
+import javafx.scene.control.Alert;
 import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.Square;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
@@ -14,8 +15,8 @@ import java.util.List;
 
 public class GridController {
     private final GridModel model;
-    private SudokuView sudokuView;
-    private GridView gridView;
+    private final SudokuView sudokuView;
+    private final GridView gridView;
     private final File sudokuFile;
     private static final String FILE_NAME = "game.sudoku";
 
@@ -27,17 +28,19 @@ public class GridController {
     }
 
     public void handleLoadGame() {
+        String message;
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = (Square[][]) SudokuFileIO.deSerializeFromFile(sudokuFile);
                 model.setSquares(squares);
             }
-
         } catch (FileNotFoundException | ClassNotFoundException e) {
-            System.out.println("Could not load projects from file, please check the data file.");
+            message = "Could not load sudoku game from file, please check the data file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File not found", message);
             System.out.println("Continuing with empty manager.");
         } catch (IOException ioe) {
-
+            message = "There is a problem with the de serialization of the file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
         }
         gridView.updateGridView();
     }
@@ -49,7 +52,8 @@ public class GridController {
                 SudokuFileIO.serializeToFile(sudokuFile, squaresToSave);
             }
         } catch (IOException ioe) {
-
+            String message = "There is a problem with the serialization of the file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
         }
         gridView.updateGridView();
     }
