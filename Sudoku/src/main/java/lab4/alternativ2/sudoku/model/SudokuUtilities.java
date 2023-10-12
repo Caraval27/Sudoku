@@ -34,7 +34,7 @@ public class SudokuUtilities {
         };
 
         convertStringToIntMatrix(numbers, representationString);
-        print(numbers); // ta bort
+        //print(numbers); // ta bort
         randomSudokuMatrix(numbers);
         print(numbers); // ta bort
 
@@ -71,7 +71,7 @@ public class SudokuUtilities {
     }
 
     public static void print(int[][][] numbers) { // ta bort sen
-        for (int i = 0; i < NR_OF_GRIDS; i++) {
+        for (int i = 0; i < NR_OF_GRIDS - 1; i++) {
             for (int row = 0; row < GRID_SIZE; row++) {
                 for (int column = 0; column < GRID_SIZE; column++) {
                     System.out.print(numbers[row][column][i]);

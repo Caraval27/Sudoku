@@ -1,6 +1,8 @@
 package lab4.alternativ2.sudoku.model;
 
-public class Square {
+import java.io.Serializable;
+
+public class Square implements Serializable {
     private final int correctNumber;
     private int selectedNumber;
     private final boolean changeable;
