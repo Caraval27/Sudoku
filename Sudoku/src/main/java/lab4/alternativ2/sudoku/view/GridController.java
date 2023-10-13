@@ -26,7 +26,7 @@ public class GridController {
         String message;
         try {
             if (sudokuFile.exists()) {
-                Square[][] squares = (Square[][]) SudokuFileIO.deSerializeFromFile(sudokuFile);
+                Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
                 model.setSquares(squares);
             }
         } catch (FileNotFoundException | ClassNotFoundException e) {

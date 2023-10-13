@@ -27,14 +27,6 @@ public class GridModel {
         return copySquares(squares);
     }
 
-    public void setSquares(Square[][] squares) {
-        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
-            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                this.squares[row][column] = squares[row][column];
-            }
-        }
-    }
-
     public SudokuUtilities.SudokuLevel getLevel() {
         return level;
     }
@@ -61,6 +53,12 @@ public class GridModel {
         Square square = squares[row][column];
         if (square.isChangeable()) {
             square.setSelectedNumber(value);
+        }
+    }
+
+    public void setSquares(Square[][] squares) {
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            System.arraycopy(squares[row], 0, this.squares[row], 0, SudokuUtilities.GRID_SIZE);
         }
     }
 

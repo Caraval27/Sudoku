@@ -34,4 +34,3 @@ public class Square implements Serializable {
         return "Square [correctNumber: " + correctNumber + ", selectedNumber: " + selectedNumber + ", changeable: " + changeable + ']';
     }
 }
-

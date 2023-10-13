@@ -2,9 +2,7 @@ package lab4.alternativ2.sudoku;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.view.SudokuView;
 
 public class Main extends Application {
