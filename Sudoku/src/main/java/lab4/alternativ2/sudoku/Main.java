@@ -10,12 +10,9 @@ import lab4.alternativ2.sudoku.view.SudokuView;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        GridModel gridModel = new GridModel();
-        SudokuView sudokuView = new SudokuView(gridModel);
+        SudokuView sudokuView = new SudokuView();
 
-        VBox root = new VBox(sudokuView.getMenuBar(), sudokuView.getBorderPane());
-
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(sudokuView.getRootPane());
         primaryStage.setTitle("Sudoku");
         primaryStage.sizeToScene();
         primaryStage.setScene(scene);

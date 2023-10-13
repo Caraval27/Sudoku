@@ -9,29 +9,44 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import lab4.alternativ2.sudoku.model.GridModel;
+import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class SudokuView {
     private final GridModel model;
     private VBox rootPane;
     private MenuBar menuBar;
-    private BorderPane borderPane;
+    private BorderPane gamePane;
     private GridView gridView;
 
-    public SudokuView(GridModel model) {
-        this.model = model;
+    public SudokuView() {
+        model = new GridModel();
+        rootPane = new VBox();
         gridView = new GridView(model);
-        borderPane = new BorderPane();
-        borderPane.setCenter(gridView.getNumberPane());
-        GridController gridController = new GridController(this.model, this, gridView);
+        gamePane = new BorderPane();
+        gamePane.setCenter(gridView.getNumberPane());
+        //lägga till 2 Vbox i gamePane
 
-        //initView();
-
+        GridController gridController = new GridController(this.model, this);
         createMenuBar(gridController);
         //createButtons(gridController);
+
+        rootPane.getChildren().addAll(menuBar, gamePane);
     }
 
-    public BorderPane getBorderPane() {
-        return borderPane;
+    public GridModel getModel() {
+        return model;
+    }
+
+    public VBox getRootPane() {
+        return rootPane;
+    }
+
+    public GridView getGridView() {
+        return gridView;
+    }
+
+    public BorderPane getGamePane() {
+        return gamePane;
     }
 
     public MenuBar getMenuBar() {
@@ -95,7 +110,7 @@ public class SudokuView {
         EventHandler<ActionEvent> easyLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelEasy();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.EASY);
             }
         };
         easyLevelItem.addEventHandler(ActionEvent.ACTION, easyLevelHandler);
@@ -103,7 +118,7 @@ public class SudokuView {
         EventHandler<ActionEvent> mediumLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelMedium();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
             }
         };
         mediumLevelItem.addEventHandler(ActionEvent.ACTION, mediumLevelHandler);
@@ -111,7 +126,7 @@ public class SudokuView {
         EventHandler<ActionEvent> hardLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelHard();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.HARD);
             }
         };
         hardLevelItem.addEventHandler(ActionEvent.ACTION, hardLevelHandler);
@@ -134,7 +149,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
+                gridController.handleGameRules();
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);
