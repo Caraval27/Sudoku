@@ -4,23 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="b276a133-9419-4a92-9083-24e7d4dec6ff" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2Wi0g4U1vKlRbDWU9v2BWU304JS" />
+  <component name="ProjectId" id="2WhecjcsP2DBWc9gh8iTGjRswqv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,21 +41,37 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/MyCodes/Java - Laboration4/Sudoku",
+    "last_opened_file_path": "C:/MyCodes/Java - Laboration4/test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="" />
-      <created>1697200201524</created>
+      <changelist id="b276a133-9419-4a92-9083-24e7d4dec6ff" name="Changes" comment="" />
+      <created>1697189323348</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1697200201524</updated>
-      <workItem from="1697200202546" duration="145000" />
-      <workItem from="1697200356837" duration="244000" />
+      <updated>1697189323348</updated>
+      <workItem from="1697189324530" duration="127000" />
+      <workItem from="1697189635770" duration="3915000" />
+      <workItem from="1697200117714" duration="221000" />
     </task>
     <servers />
   </component>
