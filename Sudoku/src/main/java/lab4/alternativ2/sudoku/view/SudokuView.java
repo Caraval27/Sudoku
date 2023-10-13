@@ -14,27 +14,26 @@ public class SudokuView {
     private final GridModel model;
     private VBox rootPane;
     private MenuBar menuBar;
-    private BorderPane borderPane;
+    private BorderPane gamePane;
+    private GridView gridView;
+
     public SudokuView(GridModel model) {
         this.model = model;
-        GridView gridView = new GridView(model);
-        borderPane = new BorderPane();
-        borderPane.setCenter(gridView.getNumberPane()); // här ska Vboxarna med knapparna in
-
-        GridController gridController = new GridController(this.model, this, gridView);
+        GridController gridController = new GridController(model, this, gridView);
+        rootPane = new VBox();
+        createMenuBar(gridController);
+        gamePane = new BorderPane();
+        rootPane.getChildren().addAll(menuBar, gamePane);
+        gridView = new GridView(model);
+        gamePane.setCenter(gridView.getNumberPane());
 
         //initView();
 
-        createMenuBar(gridController);
         //createButtons(gridController);
     }
 
-    public BorderPane getBorderPane() {
-        return borderPane;
-    }
-
-    public MenuBar getMenuBar() {
-        return this.menuBar;
+    public VBox getRootPane() {
+        return rootPane;
     }
 
     public void showAlert(Alert.AlertType type, String title, String header, String message) {
@@ -133,7 +132,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
+                showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", model.getRules());
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);

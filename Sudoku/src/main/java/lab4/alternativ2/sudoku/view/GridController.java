@@ -12,14 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GridController {
-    private final GridModel model;
+    private final GridModel gridModel;
     private final SudokuView sudokuView;
     private final GridView gridView;
     private final File sudokuFile;
     private static final String FILE_NAME = "game.sudoku";
 
-    public GridController(GridModel model, SudokuView sudokuView, GridView gridView) {
-        this.model = model;
+    public GridController(GridModel gridModel, SudokuView sudokuView, GridView gridView) {
+        this.gridModel = gridModel;
         this.sudokuView = sudokuView;
         this.gridView = gridView;
         sudokuFile = new File(FILE_NAME);
@@ -30,7 +30,7 @@ public class GridController {
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = (Square[][]) SudokuFileIO.deSerializeFromFile(sudokuFile);
-                model.setSquares(squares);
+                gridModel.setSquares(squares);
             }
         } catch (FileNotFoundException | ClassNotFoundException e) {
             message = "Could not load sudoku game from file, please check the data file.";
@@ -46,8 +46,8 @@ public class GridController {
     public void handleSaveGame() {
         try {
             if (sudokuFile.exists() || !sudokuFile.exists()) {
-                Square[][] squaresToSave = model.getSquares();
-                SudokuFileIO.serializeToFile(sudokuFile, squaresToSave);
+                Square[][] squares = gridModel.getSquares();
+                SudokuFileIO.serializeToFile(sudokuFile, squares);
             }
         } catch (IOException ioe) {
             String message = "There is a problem with the serialization of the file.";
@@ -57,27 +57,27 @@ public class GridController {
     }
 
     public void handleNewGame() {
-        model.initNewGame();
+        gridModel.initNewGame();
         gridView.updateGridView();
     }
 
     public void handleNewLevelEasy() {
-        model.setLevel(SudokuUtilities.SudokuLevel.EASY);
+        gridModel.setLevel(SudokuUtilities.SudokuLevel.EASY);
         gridView.updateGridView();
     }
 
     public void handleNewLevelMedium() {
-        model.setLevel(SudokuUtilities.SudokuLevel.MEDIUM);
+        gridModel.setLevel(SudokuUtilities.SudokuLevel.MEDIUM);
         gridView.updateGridView();
     }
 
     public void handleNewLevelHard() {
-        model.setLevel(SudokuUtilities.SudokuLevel.HARD);
+        gridModel.setLevel(SudokuUtilities.SudokuLevel.HARD);
         gridView.updateGridView();
     }
 
     public void handleStartOver() {
-        model.clearSquares();
+        gridModel.clearSquares();
         gridView.updateGridView();
     }
 }

@@ -8,8 +8,8 @@ public class GridModel {
 
     public GridModel() {
         squares = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
-        level = SudokuUtilities.SudokuLevel.MEDIUM;
         initNewGame();
+        level = SudokuUtilities.SudokuLevel.MEDIUM;
     }
 
     private Square[][] copySquares(Square[][] squares) {
@@ -27,15 +27,6 @@ public class GridModel {
 
     public Square[][] getSquares() {
         return copySquares(squares);
-    }
-
-    public void setSquares(Square[][] squares) {
-        clearSquares();
-        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
-            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                this.squares[row][column] = squares[row][column];
-            }
-        }
     }
 
     public SudokuUtilities.SudokuLevel getLevel() {
@@ -64,6 +55,15 @@ public class GridModel {
         Square square = squares[row][column];
         if (square.isChangeable()) {
             square.setSelectedNumber(value);
+        }
+    }
+
+    public void setSquares(Square[][] squares) {
+        clearSquares();
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
+                this.squares[row][column] = squares[row][column];
+            }
         }
     }
 
