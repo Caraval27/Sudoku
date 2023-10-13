@@ -22,12 +22,16 @@ public class SudokuView {
         gridView = new GridView(model);
         borderPane = new BorderPane();
         borderPane.setCenter(gridView.getNumberPane());
-        GridController gridController = new GridController(this.model, this, gridView);
+        GridController gridController = new GridController(this.model, this);
 
         //initView();
 
         createMenuBar(gridController);
         //createButtons(gridController);
+    }
+
+    public GridView getGridView() {
+        return gridView;
     }
 
     public BorderPane getBorderPane() {
