@@ -15,6 +15,7 @@ public class Main extends Application {
         Scene scene = new Scene(sudokuView.getRootPane());
         primaryStage.setTitle("Sudoku");
         primaryStage.sizeToScene();
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -13,23 +13,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2WhgblUNAOyEBk8zU688WDmu9Js" />
+  <component name="ProjectId" id="2Wi0g4U1vKlRbDWU9v2BWU304JS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Olivia Hultman/Documents/objektorienterad_programmering/l4/Lab4/sudoku"
@@ -38,12 +32,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="38577724-310e-4a13-86ed-1f4e1d27ea4b" name="Changes" comment="" />
-      <created>1697190299328</created>
+      <changelist id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="" />
+      <created>1697200201524</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1697190299328</updated>
+      <updated>1697200201524</updated>
+      <workItem from="1697200202546" duration="145000" />
+      <workItem from="1697200356837" duration="244000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
