@@ -10,8 +10,6 @@ import lab4.alternativ2.sudoku.model.io.SudokuFileIO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GridController {
     private final GridModel gridModel;
