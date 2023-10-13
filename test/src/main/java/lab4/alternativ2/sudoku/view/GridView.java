@@ -1,12 +1,15 @@
-package com.example.test.view;
+package lab4.alternativ2.sudoku.view;
 
 
-import com.example.test.model.*;
+import lab4.alternativ2.sudoku.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import lab4.alternativ2.sudoku.model.GridModel;
+import lab4.alternativ2.sudoku.model.Square;
+import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class GridView {
     private Label[][] numberSquares; // the tiles/squares to show in the ui grid

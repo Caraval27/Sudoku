@@ -3,6 +3,6 @@ module com.example.test {
     requires javafx.fxml;
 
 
-    opens com.example.test to javafx.fxml;
-    exports com.example.test;
+    opens lab4.alternativ2.sudoku to javafx.fxml;
+    exports lab4.alternativ2.sudoku;
 }

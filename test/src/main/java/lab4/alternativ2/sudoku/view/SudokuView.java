@@ -14,26 +14,28 @@ public class SudokuView {
     private final GridModel model;
     private VBox rootPane;
     private MenuBar menuBar;
-    private BorderPane gamePane;
+    private BorderPane borderPane;
     private GridView gridView;
 
     public SudokuView(GridModel model) {
         this.model = model;
-        GridController gridController = new GridController(model, this, gridView);
-        rootPane = new VBox();
-        createMenuBar(gridController);
-        gamePane = new BorderPane();
-        rootPane.getChildren().addAll(menuBar, gamePane);
         gridView = new GridView(model);
-        gamePane.setCenter(gridView.getNumberPane());
+        borderPane = new BorderPane();
+        borderPane.setCenter(gridView.getNumberPane());
+        GridController gridController = new GridController(this.model, this, gridView);
 
         //initView();
 
+        createMenuBar(gridController);
         //createButtons(gridController);
     }
 
-    public VBox getRootPane() {
-        return rootPane;
+    public BorderPane getBorderPane() {
+        return borderPane;
+    }
+
+    public MenuBar getMenuBar() {
+        return this.menuBar;
     }
 
     public void showAlert(Alert.AlertType type, String title, String header, String message) {
@@ -132,7 +134,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", model.getRules());
+                showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);

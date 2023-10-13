@@ -1,11 +1,11 @@
-package com.example.test;
+package lab4.alternativ2.sudoku;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import com.example.test.model.GridModel;
-import com.example.test.view.SudokuView;
+import lab4.alternativ2.sudoku.model.GridModel;
+import lab4.alternativ2.sudoku.view.SudokuView;
 
 public class Main extends Application {
     @Override
