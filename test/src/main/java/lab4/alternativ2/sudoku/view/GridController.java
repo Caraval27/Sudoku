@@ -58,18 +58,8 @@ public class GridController {
         sudokuView.getGridView().updateGridView();
     }
 
-    public void handleNewLevelEasy() {
-        model.setLevel(SudokuUtilities.SudokuLevel.EASY);
-        sudokuView.getGridView().updateGridView();
-    }
-
-    public void handleNewLevelMedium() {
-        model.setLevel(SudokuUtilities.SudokuLevel.MEDIUM);
-        sudokuView.getGridView().updateGridView();
-    }
-
-    public void handleNewLevelHard() {
-        model.setLevel(SudokuUtilities.SudokuLevel.HARD);
+    public void handleNewLevel(SudokuUtilities.SudokuLevel level) {
+        model.setLevel(level);
         sudokuView.getGridView().updateGridView();
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import lab4.alternativ2.sudoku.model.GridModel;
+import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class SudokuView {
     private final GridModel model;
@@ -109,7 +110,7 @@ public class SudokuView {
         EventHandler<ActionEvent> easyLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelEasy();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.EASY);
             }
         };
         easyLevelItem.addEventHandler(ActionEvent.ACTION, easyLevelHandler);
@@ -117,7 +118,7 @@ public class SudokuView {
         EventHandler<ActionEvent> mediumLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelMedium();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
             }
         };
         mediumLevelItem.addEventHandler(ActionEvent.ACTION, mediumLevelHandler);
@@ -125,7 +126,7 @@ public class SudokuView {
         EventHandler<ActionEvent> hardLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevelHard();
+                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.HARD);
             }
         };
         hardLevelItem.addEventHandler(ActionEvent.ACTION, hardLevelHandler);
