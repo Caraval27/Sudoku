@@ -42,10 +42,8 @@ public class GridController {
 
     public void handleSaveGame() {
         try {
-            if (sudokuFile.exists() || !sudokuFile.exists()) {
-                Square[][] squaresToSave = model.getSquares();
-                SudokuFileIO.serializeToFile(sudokuFile, squaresToSave);
-            }
+            Square[][] squaresToSave = model.getSquares();
+            SudokuFileIO.serializeToFile(sudokuFile, squaresToSave);
         } catch (IOException ioe) {
             String message = "There is a problem with the serialization of the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
