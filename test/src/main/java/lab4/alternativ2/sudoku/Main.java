@@ -13,9 +13,7 @@ public class Main extends Application {
         GridModel gridModel = new GridModel();
         SudokuView sudokuView = new SudokuView(gridModel);
 
-        VBox root = new VBox(sudokuView.getMenuBar(), sudokuView.getBorderPane());
-
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(sudokuView.getRootPane());
         primaryStage.setTitle("Sudoku");
         primaryStage.sizeToScene();
         primaryStage.setScene(scene);

@@ -14,28 +14,38 @@ public class SudokuView {
     private final GridModel model;
     private VBox rootPane;
     private MenuBar menuBar;
-    private BorderPane borderPane;
+    private BorderPane gamePane;
     private GridView gridView;
 
     public SudokuView(GridModel model) {
         this.model = model;
+        rootPane = new VBox();
         gridView = new GridView(model);
-        borderPane = new BorderPane();
-        borderPane.setCenter(gridView.getNumberPane());
+        gamePane = new BorderPane();
+        gamePane.setCenter(gridView.getNumberPane());
+        //lägga till 2 Vbox i gamePane
+
         GridController gridController = new GridController(this.model, this);
-
-        //initView();
-
         createMenuBar(gridController);
         //createButtons(gridController);
+
+        rootPane.getChildren().addAll(menuBar, gamePane);
+    }
+
+    public GridModel getModel() {
+        return model;
+    }
+
+    public VBox getRootPane() {
+        return rootPane;
     }
 
     public GridView getGridView() {
         return gridView;
     }
 
-    public BorderPane getBorderPane() {
-        return borderPane;
+    public BorderPane getGamePane() {
+        return gamePane;
     }
 
     public MenuBar getMenuBar() {
