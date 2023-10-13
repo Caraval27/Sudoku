@@ -15,13 +15,12 @@ public class SudokuView {
     private VBox rootPane;
     private MenuBar menuBar;
     private BorderPane borderPane;
-    private GridView gridView;
-
     public SudokuView(GridModel model) {
         this.model = model;
-        gridView = new GridView(model);
+        GridView gridView = new GridView(model);
         borderPane = new BorderPane();
-        borderPane.setCenter(gridView.getNumberPane());
+        borderPane.setCenter(gridView.getNumberPane()); // här ska Vboxarna med knapparna in
+
         GridController gridController = new GridController(this.model, this, gridView);
 
         //initView();
