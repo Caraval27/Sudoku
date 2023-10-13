@@ -28,7 +28,6 @@ public class GridModel {
     }
 
     public void setSquares(Square[][] squares) {
-        clearSquares();
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
                 this.squares[row][column] = squares[row][column];
