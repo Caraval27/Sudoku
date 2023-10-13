@@ -134,7 +134,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
+                gridController.handleGameRules();
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);

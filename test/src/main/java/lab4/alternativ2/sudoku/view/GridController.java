@@ -79,4 +79,8 @@ public class GridController {
         model.clearSquares();
         gridView.updateGridView();
     }
+
+    public void handleGameRules() {
+        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
+    }
 }
