@@ -17,8 +17,8 @@ public class SudokuView {
     private BorderPane gamePane;
     private GridView gridView;
 
-    public SudokuView(GridModel model) {
-        this.model = model;
+    public SudokuView() {
+        model = new GridModel();
         rootPane = new VBox();
         gridView = new GridView(model);
         gamePane = new BorderPane();
