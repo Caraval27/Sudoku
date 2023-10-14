@@ -84,6 +84,7 @@ public class GridController {
 
     public void handleHint() {
         gridModel.setCorrectSquare();
+        sudokuView.getGridView().updateGridView();
     }
 
     public void handleNumbers(int selectedNumber) {
@@ -92,5 +93,6 @@ public class GridController {
 
     public void handleSquares(int row, int column) {
         gridModel.setSquare(selectedNumber, row, column);
+        sudokuView.getGridView().updateGridView();
     }
 }
