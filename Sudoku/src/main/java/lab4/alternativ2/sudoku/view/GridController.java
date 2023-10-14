@@ -14,8 +14,8 @@ public class GridController {
     private final GridModel gridModel;
     private final SudokuView sudokuView;
     private final File sudokuFile;
-    private static final String FILE_NAME = "game.sudoku";
     private int selectedNumber;
+    private static final String FILE_NAME = "game.sudoku";
 
     public GridController(GridModel gridModel, SudokuView sudokuView) {
         this.gridModel = gridModel;

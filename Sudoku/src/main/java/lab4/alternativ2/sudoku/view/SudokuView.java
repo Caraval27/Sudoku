@@ -20,17 +20,16 @@ public class SudokuView {
 
     public SudokuView() {
         gridModel = new GridModel();
-        rootPane = new VBox();
-        gridView = new GridView(gridModel);
-        gamePane = new BorderPane();
-        gamePane.setCenter(gridView.getNumberPane());
-        //lägga till 2 Vbox i gamePane
-
         GridController gridController = new GridController(this.gridModel, this);
+        rootPane = new VBox();
         createMenuBar(gridController);
-        //createButtons(gridController);
-
+        gamePane = new BorderPane();
         rootPane.getChildren().addAll(menuBar, gamePane);
+        gridView = new GridView(gridModel);
+        gamePane.setCenter(gridView.getNumberPane());
+
+        //lägga till 2 Vbox i gamePane
+        //createButtons(gridController);
     }
 
     public GridModel getGridModel() {
