@@ -62,14 +62,10 @@ public class GridModel {
         }
     }
 
-    public void clearSquare(int row, int column) {
-        setSquare(0, row, column);
-    }
-
     public void clearSquares() {
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                clearSquare(row, column);
+                setSquare(0, row, column);
             }
         }
     }

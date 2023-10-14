@@ -53,11 +53,11 @@ public class SudokuView {
         return menuBar;
     }
 
-    public void showAlert(Alert.AlertType type, String title, String header, String message) {
+    public void showAlert(Alert.AlertType type, String title, String header, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.setContentText(message);
+        alert.setContentText(content);
         alert.show();
     }
 
@@ -110,7 +110,7 @@ public class SudokuView {
         EventHandler<ActionEvent> easyLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.EASY);
+                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.EASY);
             }
         };
         easyLevelItem.addEventHandler(ActionEvent.ACTION, easyLevelHandler);
@@ -118,7 +118,7 @@ public class SudokuView {
         EventHandler<ActionEvent> mediumLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
+                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
             }
         };
         mediumLevelItem.addEventHandler(ActionEvent.ACTION, mediumLevelHandler);
@@ -126,7 +126,7 @@ public class SudokuView {
         EventHandler<ActionEvent> hardLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewLevel(SudokuUtilities.SudokuLevel.HARD);
+                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.HARD);
             }
         };
         hardLevelItem.addEventHandler(ActionEvent.ACTION, hardLevelHandler);

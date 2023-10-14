@@ -15,6 +15,7 @@ public class GridController {
     private final SudokuView sudokuView;
     private final File sudokuFile;
     private static final String FILE_NAME = "game.sudoku";
+    private int selectedNumber;
 
     public GridController(GridModel gridModel, SudokuView sudokuView) {
         this.gridModel = gridModel;
@@ -23,19 +24,19 @@ public class GridController {
     }
 
     public void handleLoadGame() {
-        String message;
+        String content;
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
                 gridModel.setSquares(squares);
             }
         } catch (FileNotFoundException | ClassNotFoundException e) {
-            message = "Could not load sudoku game from file, please check the data file.";
-            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File not found", message);
+            content = "Could not load sudoku game from file, please check the data file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File not found", content);
             System.out.println("Continuing with empty manager.");
         } catch (IOException ioe) {
-            message = "There is a problem with the de serialization of the file.";
-            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
+            content = "There is a problem with the de serialization of the file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", content);
         }
         sudokuView.getGridView().updateGridView();
     }
@@ -56,7 +57,7 @@ public class GridController {
         sudokuView.getGridView().updateGridView();
     }
 
-    public void handleNewLevel(SudokuUtilities.SudokuLevel level) {
+    public void handleSelectNewLevel(SudokuUtilities.SudokuLevel level) {
         gridModel.setLevel(level);
         sudokuView.getGridView().updateGridView();
     }
@@ -68,5 +69,28 @@ public class GridController {
 
     public void handleGameRules() {
         sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", gridModel.getRules());
+    }
+
+    public void handleCheck() {
+        String content = "Numbers selected so far are ";
+        if (gridModel.checkSquares()) {
+            content += "correct.";
+        }
+        else {
+            content += "incorrect.";
+        }
+        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Check", content);
+    }
+
+    public void handleHint() {
+        gridModel.setCorrectSquare();
+    }
+
+    public void handleNumbers(int selectedNumber) {
+        this.selectedNumber = selectedNumber;
+    }
+
+    public void handleSquares(int row, int column) {
+        gridModel.setSquare(selectedNumber, row, column);
     }
 }
