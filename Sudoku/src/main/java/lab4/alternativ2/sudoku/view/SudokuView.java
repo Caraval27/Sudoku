@@ -151,19 +151,103 @@ public class SudokuView {
 
     public void createButtons() {
         Button checkButton = new Button("Check");
+        EventHandler<ActionEvent> checkHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleCheck();
+            }
+        };
+        checkButton.addEventHandler(ActionEvent.ACTION, checkHandler);
         Button hintButton = new Button("Hint");
+        EventHandler<ActionEvent> hintHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleHint();
+            }
+        };
+        hintButton.addEventHandler(ActionEvent.ACTION, hintHandler);
         helpButtonPane.getChildren().addAll(checkButton, hintButton);
 
         Button number1Button = new Button("1");
+        EventHandler<ActionEvent> number1Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(1);
+            }
+        };
+        number1Button.addEventHandler(ActionEvent.ACTION, number1Handler);
         Button number2Button = new Button("2");
+        EventHandler<ActionEvent> number2Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(2);
+            }
+        };
+        number2Button.addEventHandler(ActionEvent.ACTION, number2Handler);
         Button number3Button = new Button("3");
+        EventHandler<ActionEvent> number3Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(3);
+            }
+        };
+        number3Button.addEventHandler(ActionEvent.ACTION, number3Handler);
         Button number4Button = new Button("4");
+        EventHandler<ActionEvent> number4Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(4);
+            }
+        };
+        number4Button.addEventHandler(ActionEvent.ACTION, number4Handler);
         Button number5Button = new Button("5");
+        EventHandler<ActionEvent> number5Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(5);
+            }
+        };
+        number5Button.addEventHandler(ActionEvent.ACTION, number5Handler);
         Button number6Button = new Button("6");
+        EventHandler<ActionEvent> number6Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(6);
+            }
+        };
+        number6Button.addEventHandler(ActionEvent.ACTION, number6Handler);
         Button number7Button = new Button("7");
+        EventHandler<ActionEvent> number7Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(7);
+            }
+        };
+        number7Button.addEventHandler(ActionEvent.ACTION, number7Handler);
         Button number8Button = new Button("8");
+        EventHandler<ActionEvent> number8Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(8);
+            }
+        };
+        number8Button.addEventHandler(ActionEvent.ACTION, number8Handler);
         Button number9Button = new Button("9");
+        EventHandler<ActionEvent> number9Handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(9);
+            }
+        };
+        number9Button.addEventHandler(ActionEvent.ACTION, number9Handler);
         Button clearButton = new Button("C");
+        EventHandler<ActionEvent> clearHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                gridController.handleNumbers(0);
+            }
+        };
+        clearButton.addEventHandler(ActionEvent.ACTION, clearHandler);
         numberButtonPane.getChildren().addAll(number1Button, number2Button, number3Button, number4Button, number5Button, number6Button, number7Button, number8Button, number9Button, clearButton);
     }
 }
