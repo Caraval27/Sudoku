@@ -27,7 +27,7 @@ public class SudokuView {
 
         helpButtonPane = new VBox();
         gamePane.setLeft(helpButtonPane);
-        gridView = new GridView(gridModel);
+        gridView = new GridView(gridModel, gridController);
         gamePane.setCenter(gridView.getNumberPane());
         numberButtonPane = new VBox();
         gamePane.setRight(numberButtonPane);
@@ -149,7 +149,7 @@ public class SudokuView {
         menuBar.getMenus().addAll(fileMenu, gameMenu, helpMenu);
     }
 
-    public void createButtons() {
+    private void createButtons() {
         Button checkButton = new Button("Check");
         EventHandler<ActionEvent> checkHandler = new EventHandler<ActionEvent>() {
             @Override
