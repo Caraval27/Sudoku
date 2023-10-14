@@ -2,6 +2,8 @@ package lab4.alternativ2.sudoku.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -150,6 +152,8 @@ public class SudokuView {
     }
 
     private void createButtons() {
+        helpButtonPane.setAlignment(Pos.CENTER);
+        helpButtonPane.setSpacing(10);
         Button checkButton = new Button("Check");
         EventHandler<ActionEvent> checkHandler = new EventHandler<ActionEvent>() {
             @Override
@@ -168,6 +172,8 @@ public class SudokuView {
         hintButton.addEventHandler(ActionEvent.ACTION, hintHandler);
         helpButtonPane.getChildren().addAll(checkButton, hintButton);
 
+        helpButtonPane.setAlignment(Pos.CENTER);
+        numberButtonPane.setSpacing(5);
         Button number1Button = new Button("1");
         EventHandler<ActionEvent> number1Handler = new EventHandler<ActionEvent>() {
             @Override

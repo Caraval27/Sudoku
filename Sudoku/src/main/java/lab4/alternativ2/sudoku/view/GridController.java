@@ -24,7 +24,7 @@ public class GridController {
     }
 
     private void checkGameFinished() {
-        if (gridModel.AllSquaresSelected()) {
+        if (gridModel.allSquaresSelected()) {
             String content = "Numbers selected are ";
             if (gridModel.checkSquares()) {
                 content += "correct.";
