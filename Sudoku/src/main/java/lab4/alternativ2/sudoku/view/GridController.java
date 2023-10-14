@@ -23,6 +23,19 @@ public class GridController {
         sudokuFile = new File(FILE_NAME);
     }
 
+    private void checkGameFinished() {
+        if (gridModel.AllSquaresSelected()) {
+            String content = "Numbers selected are ";
+            if (gridModel.checkSquares()) {
+                content += "correct.";
+            }
+            else {
+                content += "incorrect.";
+            }
+            sudokuView.showAlert(Alert.AlertType.INFORMATION, "Game", "Game finished", content);
+        }
+    }
+
     public void handleLoadGame() {
         String content;
         try {
@@ -39,6 +52,8 @@ public class GridController {
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", content);
         }
         sudokuView.getGridView().updateGridView();
+
+        checkGameFinished();
     }
 
     public void handleSaveGame() {
@@ -85,6 +100,8 @@ public class GridController {
     public void handleHint() {
         gridModel.setCorrectSquare();
         sudokuView.getGridView().updateGridView();
+
+        checkGameFinished();
     }
 
     public void handleNumbers(int selectedNumber) {
@@ -94,5 +111,7 @@ public class GridController {
     public void handleSquares(int row, int column) {
         gridModel.setSquare(selectedNumber, row, column);
         sudokuView.getGridView().updateGridView();
+
+        checkGameFinished();
     }
 }

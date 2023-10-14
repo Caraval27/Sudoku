@@ -12,10 +12,10 @@ import lab4.alternativ2.sudoku.model.Square;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class GridView {
-    private GridModel gridModel;
-    private GridController gridController;
+    private final GridModel gridModel;
+    private final GridController gridController;
     private TilePane numberPane;
-    private Label[][] numberSquares; // the tiles/squares to show in the ui grid
+    private final Label[][] numberSquares; // the tiles/squares to show in the ui grid
 
     public GridView(GridModel gridModel, GridController gridController) {
         this.gridModel = gridModel;

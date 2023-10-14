@@ -78,7 +78,7 @@ public class GridModel {
             row = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
             column = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
             square = squares[row][column];
-        } while (!square.isChangeable());
+        } while (!square.isChangeable() || square.getSelectedNumber() != 0);
         setSquare(square.getCorrectNumber(), row, column);
     }
 
@@ -100,6 +100,17 @@ public class GridModel {
         rules += "Rule 2: The digits can only occur once per block (the 9 3x3 blocks in the 9x9 grid).\n";
         rules += "Rule 3: The sum of every single row, column and 3x3 block must equal 45.\n";
         return rules;
+    }
+
+    public boolean AllSquaresSelected() {
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
+                if (squares[row][column].getSelectedNumber() == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
