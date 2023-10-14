@@ -29,6 +29,7 @@ public class SudokuView {
 
         helpButtonPane = new VBox();
         gamePane.setLeft(helpButtonPane);
+        gamePane.setPadding(new Insets(10));
         gridView = new GridView(gridModel, gridController);
         gamePane.setCenter(gridView.getNumberPane());
         numberButtonPane = new VBox();
@@ -153,6 +154,7 @@ public class SudokuView {
 
     private void createButtons() {
         helpButtonPane.setAlignment(Pos.CENTER);
+        helpButtonPane.setPadding(new Insets(0, 10, 0, 0));
         helpButtonPane.setSpacing(10);
         Button checkButton = new Button("Check");
         EventHandler<ActionEvent> checkHandler = new EventHandler<ActionEvent>() {
@@ -172,8 +174,9 @@ public class SudokuView {
         hintButton.addEventHandler(ActionEvent.ACTION, hintHandler);
         helpButtonPane.getChildren().addAll(checkButton, hintButton);
 
-        helpButtonPane.setAlignment(Pos.CENTER);
-        numberButtonPane.setSpacing(5);
+        numberButtonPane.setAlignment(Pos.CENTER);
+        numberButtonPane.setSpacing(1);
+        numberButtonPane.setPadding(new Insets(0, 0, 0, 10));
         Button number1Button = new Button("1");
         EventHandler<ActionEvent> number1Handler = new EventHandler<ActionEvent>() {
             @Override
