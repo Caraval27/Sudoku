@@ -12,10 +12,10 @@ import lab4.alternativ2.sudoku.model.SudokuUtilities;
 public class GridView {
     private Label[][] numberSquares; // the tiles/squares to show in the ui grid
     private TilePane numberPane;
-    private GridModel model;
+    private GridModel gridModel;
 
-    public GridView(GridModel model) {
-        this.model = model;
+    public GridView(GridModel gridModel) {
+        this.gridModel = gridModel;
         numberSquares = new Label[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         initNumberSquares();
         // ...
@@ -57,7 +57,7 @@ public class GridView {
 
     private String squareNumberToString(int row, int column) {
         String stringNumber;
-        Square[][] squares = model.getSquares();
+        Square[][] squares = gridModel.getSquares();
         int number = squares[row][column].getSelectedNumber();
 
         if (number == 0) {

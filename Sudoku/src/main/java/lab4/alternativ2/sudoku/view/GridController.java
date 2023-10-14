@@ -11,13 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GridController {
-    private final GridModel model;
+    private final GridModel gridModel;
     private final SudokuView sudokuView;
     private final File sudokuFile;
     private static final String FILE_NAME = "game.sudoku";
 
-    public GridController(GridModel model, SudokuView sudokuView) {
-        this.model = model;
+    public GridController(GridModel gridModel, SudokuView sudokuView) {
+        this.gridModel = gridModel;
         this.sudokuView = sudokuView;
         sudokuFile = new File(FILE_NAME);
     }
@@ -27,7 +27,7 @@ public class GridController {
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
-                model.setSquares(squares);
+                gridModel.setSquares(squares);
             }
         } catch (FileNotFoundException | ClassNotFoundException e) {
             message = "Could not load sudoku game from file, please check the data file.";
@@ -42,8 +42,8 @@ public class GridController {
 
     public void handleSaveGame() {
         try {
-            Square[][] squaresToSave = model.getSquares();
-            SudokuFileIO.serializeToFile(sudokuFile, squaresToSave);
+            Square[][] squares = gridModel.getSquares();
+            SudokuFileIO.serializeToFile(sudokuFile, squares);
         } catch (IOException ioe) {
             String message = "There is a problem with the serialization of the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
@@ -52,21 +52,21 @@ public class GridController {
     }
 
     public void handleNewGame() {
-        model.initNewGame();
+        gridModel.initNewGame();
         sudokuView.getGridView().updateGridView();
     }
 
     public void handleNewLevel(SudokuUtilities.SudokuLevel level) {
-        model.setLevel(level);
+        gridModel.setLevel(level);
         sudokuView.getGridView().updateGridView();
     }
 
     public void handleStartOver() {
-        model.clearSquares();
+        gridModel.clearSquares();
         sudokuView.getGridView().updateGridView();
     }
 
     public void handleGameRules() {
-        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game Rules", model.getRules());
+        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", gridModel.getRules());
     }
 }

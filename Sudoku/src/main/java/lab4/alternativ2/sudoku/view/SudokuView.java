@@ -12,29 +12,29 @@ import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class SudokuView {
-    private final GridModel model;
+    private final GridModel gridModel;
     private VBox rootPane;
     private MenuBar menuBar;
     private BorderPane gamePane;
     private GridView gridView;
 
     public SudokuView() {
-        model = new GridModel();
+        gridModel = new GridModel();
         rootPane = new VBox();
-        gridView = new GridView(model);
+        gridView = new GridView(gridModel);
         gamePane = new BorderPane();
         gamePane.setCenter(gridView.getNumberPane());
         //lägga till 2 Vbox i gamePane
 
-        GridController gridController = new GridController(this.model, this);
+        GridController gridController = new GridController(this.gridModel, this);
         createMenuBar(gridController);
         //createButtons(gridController);
 
         rootPane.getChildren().addAll(menuBar, gamePane);
     }
 
-    public GridModel getModel() {
-        return model;
+    public GridModel getGridModel() {
+        return gridModel;
     }
 
     public VBox getRootPane() {
@@ -50,7 +50,7 @@ public class SudokuView {
     }
 
     public MenuBar getMenuBar() {
-        return this.menuBar;
+        return menuBar;
     }
 
     public void showAlert(Alert.AlertType type, String title, String header, String message) {
