@@ -43,12 +43,12 @@ public class GridController {
                 Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
                 gridModel.setSquares(squares);
             }
-        } catch (FileNotFoundException | ClassNotFoundException e) {
-            content = "Could not load sudoku game from file, please check the data file.";
-            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File not found", content);
+        } catch (FileNotFoundException | ClassNotFoundException ioException) {
+            content = "Could not load sudoku game from file, please check the file.";
+            sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File or class not found", content);
             System.out.println("Continuing with empty manager.");
-        } catch (IOException ioe) {
-            content = "There is a problem with the de serialization of the file.";
+        } catch (IOException ioException) {
+            content = "There is a problem with the de serialization from the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", content);
         }
         sudokuView.getGridView().updateGridView();
@@ -60,8 +60,8 @@ public class GridController {
         try {
             Square[][] squares = gridModel.getSquares();
             SudokuFileIO.serializeToFile(sudokuFile, squares);
-        } catch (IOException ioe) {
-            String message = "There is a problem with the serialization of the file.";
+        } catch (IOException ioException) {
+            String message = "There is a problem with the serialization to the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
         }
         sudokuView.getGridView().updateGridView();
