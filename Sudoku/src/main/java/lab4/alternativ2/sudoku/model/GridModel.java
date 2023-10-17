@@ -27,6 +27,10 @@ public class GridModel {
         return copySquares(squares);
     }
 
+    public SudokuUtilities.SudokuLevel getLevel() {
+        return level;
+    }
+
     public void initNewGame() {
         int[][][] numbers;
         do {

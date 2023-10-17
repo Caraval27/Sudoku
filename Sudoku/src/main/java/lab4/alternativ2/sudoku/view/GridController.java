@@ -21,13 +21,20 @@ public class GridController {
 
     private void checkGameFinished() {
         if (gridModel.allSquaresSelected()) {
+            String header = "Level ";
+            switch(gridModel.getLevel()) {
+                case EASY -> header += "easy";
+                case MEDIUM -> header += "medium";
+                case HARD -> header += "hard";
+            }
+            header += " finished";
             String content = "Numbers selected are ";
             if (gridModel.checkSquares()) {
                 content += "correct.";
             } else {
                 content += "incorrect.";
             }
-            sudokuView.showAlert(Alert.AlertType.INFORMATION, "Game", "Game finished", content);
+            sudokuView.showAlert(Alert.AlertType.INFORMATION, "Game", header, content);
         }
     }
 
