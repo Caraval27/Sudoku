@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/SudokuUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/SudokuUtilities.java" afterDir="false" />
-    </list>
+    <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +37,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />
-      <module name="Sudoku" />
+      <module name="sudoku" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lab4.alternativ2.sudoku.*" />
