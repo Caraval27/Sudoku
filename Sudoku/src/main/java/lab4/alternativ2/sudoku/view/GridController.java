@@ -1,6 +1,8 @@
 package lab4.alternativ2.sudoku.view;
 
 import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.Square;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
@@ -13,14 +15,12 @@ import java.io.IOException;
 public class GridController {
     private final GridModel gridModel;
     private final SudokuView sudokuView;
-    private final File sudokuFile;
+    private File sudokuFile;
     private int selectedNumber;
-    private static final String FILE_NAME = "game.sudoku";
 
     public GridController(GridModel gridModel, SudokuView sudokuView) {
         this.gridModel = gridModel;
         this.sudokuView = sudokuView;
-        sudokuFile = new File(FILE_NAME);
     }
 
     private void checkGameFinished() {
@@ -36,8 +36,10 @@ public class GridController {
         }
     }
 
-    public void handleLoadGame() {
+    public void handleLoadGame(Stage stage) {
         String content;
+
+        sudokuFile = sudokuView.getFileChooser().showOpenDialog(stage);
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
@@ -46,7 +48,6 @@ public class GridController {
         } catch (FileNotFoundException | ClassNotFoundException ioException) {
             content = "Could not load sudoku game from file, please check the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "File or class not found", content);
-            System.out.println("Continuing with empty manager.");
         } catch (IOException ioException) {
             content = "There is a problem with the de serialization from the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", content);
@@ -56,7 +57,8 @@ public class GridController {
         checkGameFinished();
     }
 
-    public void handleSaveGame() {
+    public void handleSaveGame(Stage stage) {
+        sudokuFile = sudokuView.getFileChooser().showSaveDialog(stage);
         try {
             Square[][] squares = gridModel.getSquares();
             SudokuFileIO.serializeToFile(sudokuFile, squares);
@@ -64,7 +66,6 @@ public class GridController {
             String message = "There is a problem with the serialization to the file.";
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", message);
         }
-        sudokuView.getGridView().updateGridView();
     }
 
     public void handleNewGame() {
