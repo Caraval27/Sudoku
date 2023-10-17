@@ -7,10 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import lab4.alternativ2.sudoku.model.GridModel;
-import lab4.alternativ2.sudoku.model.Square;
-import lab4.alternativ2.sudoku.model.SudokuUtilities;
-
+import lab4.alternativ2.sudoku.model.*;
 import java.util.Objects;
 
 public class GridView {
@@ -28,7 +25,7 @@ public class GridView {
         fontBold = Font.font("Monospaced", FontWeight.BOLD, 20);
         fontNormal = Font.font("Monospaced", FontWeight.NORMAL, 20);
         initNumberSquares();
-        makeNumberPane();
+        createNumberPane();
     }
 
     // use this method to get a reference to the number (called by some other class)
@@ -47,10 +44,11 @@ public class GridView {
     public void updateNumberSquaresFont() {
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                if(Objects.equals(numberSquares[row][column].getText(), " "))
+                if(Objects.equals(numberSquares[row][column].getText(), " ")) {
                     numberSquares[row][column].setFont(fontNormal);
-                else
+                } else {
                     numberSquares[row][column].setFont(fontBold);
+                }
             }
         }
     }
@@ -76,14 +74,13 @@ public class GridView {
                 Label square = new Label(squareNumberToString(row, col)); // data from model
                 square.setPrefWidth(32);
                 square.setPrefHeight(32);
-                if(Objects.equals(square.getText(), " "))
+                if(Objects.equals(square.getText(), " ")) {
                     square.setFont(fontNormal);
-                else 
+                } else {
                     square.setFont(fontBold);
+                }
                 square.setAlignment(Pos.CENTER);
                 square.setStyle("-fx-border-color: black; -fx-border-width: 0.5px;"); // css style
-                //tile.setOnMouseClicked(tileClickHandler); // add your custom event handler
-                // add new tile to grid
                 square.addEventHandler(MouseEvent.MOUSE_CLICKED, squareHandler);
                 numberSquares[row][col] = square;
             }
@@ -104,17 +101,14 @@ public class GridView {
         return stringNumber;
     }
 
-    private final void makeNumberPane() {
+    private final void createNumberPane() {
         // create the root tile pane
         numberPane = new TilePane();
         numberPane.setPrefColumns(SudokuUtilities.SECTIONS_PER_ROW);
         numberPane.setPrefRows(SudokuUtilities.SECTIONS_PER_ROW);
-        numberPane.setStyle(
-                "-fx-border-color: black; -fx-border-width: 1.0px; -fx-background-color: white;");
+        numberPane.setStyle("-fx-border-color: black; -fx-border-width: 1.0px; -fx-background-color: white;");
 
         // create the 3*3 sections and add the number tiles
-        TilePane[][] sections = new TilePane[SudokuUtilities.SECTIONS_PER_ROW][SudokuUtilities.SECTIONS_PER_ROW];
-        int i = 0;
         for (int srow = 0; srow < SudokuUtilities.SECTIONS_PER_ROW; srow++) {
             for (int scol = 0; scol < SudokuUtilities.SECTIONS_PER_ROW; scol++) {
                 TilePane section = new TilePane();
@@ -130,7 +124,6 @@ public class GridView {
                                 [scol * SudokuUtilities.SECTION_SIZE + col]);
                     }
                 }
-
                 // add the section to the root tile pane
                 numberPane.getChildren().add(section);
             }

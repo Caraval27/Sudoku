@@ -1,9 +1,7 @@
 package lab4.alternativ2.sudoku.model;
 
 public class SudokuUtilities {
-
     public enum SudokuLevel {EASY, MEDIUM, HARD}
-
     public static final int GRID_SIZE = 9;
     public static final int NR_OF_GRIDS = 2;
     public static final int SECTIONS_PER_ROW = 3;
@@ -32,11 +30,8 @@ public class SudokuUtilities {
             case HARD -> hard;
             default -> medium;
         };
-
         convertStringToIntMatrix(numbers, representationString);
-        //print(numbers); // ta bort
         randomSudokuMatrix(numbers);
-        print(numbers); // ta bort
 
         return numbers;
     }
@@ -70,7 +65,7 @@ public class SudokuUtilities {
         }
     }
 
-    public static void print(int[][][] numbers) { // ta bort sen
+    /*public static void print(int[][][] numbers) {
         for (int grid = 0; grid < NR_OF_GRIDS - 1; grid++) {
             for (int row = 0; row < GRID_SIZE; row++) {
                 for (int column = 0; column < GRID_SIZE; column++) {
@@ -80,7 +75,7 @@ public class SudokuUtilities {
             }
             System.out.println("\n");
         }
-    }
+    }*/
 
     private static int convertCharToSudokuInt(char ch) {
         if (ch < '0' || ch > '9') throw new IllegalArgumentException("character " + ch);

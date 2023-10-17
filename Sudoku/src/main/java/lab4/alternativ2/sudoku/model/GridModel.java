@@ -27,10 +27,6 @@ public class GridModel {
         return copySquares(squares);
     }
 
-    public SudokuUtilities.SudokuLevel getLevel() {
-        return level;
-    }
-
     public void initNewGame() {
         int[][][] numbers;
         do {
@@ -52,7 +48,7 @@ public class GridModel {
         initNewGame();
     }
 
-    public void setSquare(int value, int row, int column) {
+    public void setSelectedSquare(int value, int row, int column) {
         Square square = squares[row][column];
         if (square.isChangeable()) {
             square.setSelectedNumber(value);
@@ -65,24 +61,23 @@ public class GridModel {
         }
     }
 
-    public void clearSquares() {
+    public void clearSelectedSquares() {
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                setSquare(0, row, column);
+                setSelectedSquare(0, row, column);
             }
         }
     }
 
     public void setCorrectSquare() {
-        int row;
-        int column;
+        int row, column;
         Square square;
         do {
             row = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
             column = SudokuUtilities.generateRandomNumber(SudokuUtilities.MAX_POSITION, SudokuUtilities.MIN_POSITION);
             square = squares[row][column];
         } while (!square.isChangeable() || square.getSelectedNumber() != 0);
-        setSquare(square.getCorrectNumber(), row, column);
+        setSelectedSquare(square.getCorrectNumber(), row, column);
     }
 
     public boolean checkSquares() {

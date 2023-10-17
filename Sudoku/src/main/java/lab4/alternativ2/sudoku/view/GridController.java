@@ -1,13 +1,9 @@
 package lab4.alternativ2.sudoku.view;
 
 import javafx.scene.control.Alert;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import lab4.alternativ2.sudoku.model.GridModel;
-import lab4.alternativ2.sudoku.model.Square;
-import lab4.alternativ2.sudoku.model.SudokuUtilities;
+import lab4.alternativ2.sudoku.model.*;
 import lab4.alternativ2.sudoku.model.io.SudokuFileIO;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,8 +24,7 @@ public class GridController {
             String content = "Numbers selected are ";
             if (gridModel.checkSquares()) {
                 content += "correct.";
-            }
-            else {
+            } else {
                 content += "incorrect.";
             }
             sudokuView.showAlert(Alert.AlertType.INFORMATION, "Game", "Game finished", content);
@@ -81,7 +76,7 @@ public class GridController {
     }
 
     public void handleStartOver() {
-        gridModel.clearSquares();
+        gridModel.clearSelectedSquares();
         sudokuView.getGridView().updateGridView();
     }
 
@@ -93,8 +88,7 @@ public class GridController {
         String content = "Numbers selected so far are ";
         if (gridModel.checkSquares()) {
             content += "correct.";
-        }
-        else {
+        } else {
             content += "incorrect.";
         }
         sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Check", content);
@@ -103,7 +97,6 @@ public class GridController {
     public void handleHint() {
         gridModel.setCorrectSquare();
         sudokuView.getGridView().updateGridView();
-
         checkGameFinished();
     }
 
@@ -112,9 +105,8 @@ public class GridController {
     }
 
     public void handleSquares(int row, int column) {
-        gridModel.setSquare(selectedNumber, row, column);
+        gridModel.setSelectedSquare(selectedNumber, row, column);
         sudokuView.getGridView().updateGridView();
-
         checkGameFinished();
     }
 }

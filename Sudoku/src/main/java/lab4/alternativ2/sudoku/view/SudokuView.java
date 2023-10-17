@@ -12,39 +12,40 @@ import javafx.stage.Stage;
 import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
-import java.io.File;
-
 public class SudokuView {
     private final GridController gridController;
+    private final Stage stage;
     private final VBox rootPane;
     private MenuBar menuBar;
     private final VBox helpButtonPane;
     private final GridView gridView;
     private final VBox numberButtonPane;
     private FileChooser fileChooser;
-    private final Stage stage;
 
     public SudokuView(Stage stage) {
         GridModel gridModel = new GridModel();
         gridController = new GridController(gridModel, this);
 
+        this.stage = stage;
+
         rootPane = new VBox();
         createMenuBar();
         BorderPane gamePane = new BorderPane();
+        gamePane.setPadding(new Insets(10));
         rootPane.getChildren().addAll(menuBar, gamePane);
 
         helpButtonPane = new VBox();
         gamePane.setLeft(helpButtonPane);
-        gamePane.setPadding(new Insets(10));
+
         gridView = new GridView(gridModel, gridController);
         gamePane.setCenter(gridView.getNumberPane());
+
         numberButtonPane = new VBox();
         gamePane.setRight(numberButtonPane);
 
-        showFileChooser();
-        this.stage = stage;
-
         createButtons();
+
+        createFileChooser();
     }
 
     public VBox getRootPane() {
@@ -59,11 +60,11 @@ public class SudokuView {
         return fileChooser;
     }
 
-    public void showFileChooser() {
+    public void createFileChooser() {
         fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("sudoku files", "*.sudoku");
-        fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setTitle("Open sudoku File");
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Sudoku files", "*.sudoku");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        fileChooser.setTitle("Open sudoku file");
     }
 
     public void showAlert(Alert.AlertType type, String title, String header, String content) {

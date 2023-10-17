@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="" />
+    <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/GridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/GridModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/SudokuUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/SudokuUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/io/SudokuFileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/io/SudokuFileIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +45,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />
-      <module name="sudoku" />
+      <module name="Sudoku" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lab4.alternativ2.sudoku.*" />
@@ -70,5 +78,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
