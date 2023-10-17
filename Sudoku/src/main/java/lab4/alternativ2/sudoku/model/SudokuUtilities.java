@@ -71,10 +71,10 @@ public class SudokuUtilities {
     }
 
     public static void print(int[][][] numbers) { // ta bort sen
-        for (int i = 0; i < NR_OF_GRIDS - 1; i++) {
+        for (int grid = 0; grid < NR_OF_GRIDS - 1; grid++) {
             for (int row = 0; row < GRID_SIZE; row++) {
                 for (int column = 0; column < GRID_SIZE; column++) {
-                    System.out.print(numbers[row][column][i]);
+                    System.out.print(numbers[row][column][grid]);
                 }
                 System.out.println();
             }

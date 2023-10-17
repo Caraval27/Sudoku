@@ -44,7 +44,6 @@ public class GridModel {
                 squares[row][column] = new Square(number[1], selectedNumber, changeable);
             }
         }
-
     }
 
     public void setLevel(SudokuUtilities.SudokuLevel level) {
