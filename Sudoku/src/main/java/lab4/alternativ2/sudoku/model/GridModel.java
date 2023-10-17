@@ -32,7 +32,10 @@ public class GridModel {
     }
 
     public void initNewGame() {
-        int[][][] numbers = SudokuUtilities.generateSudokuMatrix(level);
+        int[][][] numbers;
+        do {
+            numbers = SudokuUtilities.generateSudokuMatrix(level);
+        } while (squares[0][0] != null && numbers[0][0][1] == squares[0][0].getCorrectNumber());
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
                 int[] number = numbers[row][column];
@@ -41,6 +44,7 @@ public class GridModel {
                 squares[row][column] = new Square(number[1], selectedNumber, changeable);
             }
         }
+
     }
 
     public void setLevel(SudokuUtilities.SudokuLevel level) {
