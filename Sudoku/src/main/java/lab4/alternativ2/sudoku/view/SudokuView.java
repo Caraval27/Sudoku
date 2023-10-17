@@ -7,8 +7,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
+
+import java.io.File;
 
 public class SudokuView {
     private final GridController gridController;
@@ -17,8 +21,10 @@ public class SudokuView {
     private final VBox helpButtonPane;
     private final GridView gridView;
     private final VBox numberButtonPane;
+    private FileChooser fileChooser;
+    private final Stage stage;
 
-    public SudokuView() {
+    public SudokuView(Stage stage) {
         GridModel gridModel = new GridModel();
         gridController = new GridController(gridModel, this);
 
@@ -35,6 +41,9 @@ public class SudokuView {
         numberButtonPane = new VBox();
         gamePane.setRight(numberButtonPane);
 
+        showFileChooser();
+        this.stage = stage;
+
         createButtons();
     }
 
@@ -44,6 +53,17 @@ public class SudokuView {
 
     public GridView getGridView() {
         return gridView;
+    }
+
+    public FileChooser getFileChooser() {
+        return fileChooser;
+    }
+
+    public void showFileChooser() {
+        fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("sudoku files", "*.sudoku");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Open sudoku File");
     }
 
     public void showAlert(Alert.AlertType type, String title, String header, String content) {
@@ -63,7 +83,7 @@ public class SudokuView {
         EventHandler<ActionEvent> loadGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleLoadGame();
+                gridController.handleLoadGame(stage);
             }
         };
         loadGameItem.addEventHandler(ActionEvent.ACTION, loadGameHandler);
@@ -71,7 +91,7 @@ public class SudokuView {
         EventHandler<ActionEvent> saveGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleSaveGame();
+                gridController.handleSaveGame(stage);
             }
         };
         saveGameItem.addEventHandler(ActionEvent.ACTION, saveGameHandler);
