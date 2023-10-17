@@ -61,7 +61,7 @@ public class SudokuView {
         return fileChooser;
     }
 
-    public void createFileChooser() {
+    private void createFileChooser() {
         fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Sudoku files", "*.sudoku");
         fileChooser.getExtensionFilters().add(extensionFilter);
