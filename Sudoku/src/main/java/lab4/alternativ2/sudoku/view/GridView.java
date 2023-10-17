@@ -11,16 +11,22 @@ import lab4.alternativ2.sudoku.model.GridModel;
 import lab4.alternativ2.sudoku.model.Square;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
+import java.util.Objects;
+
 public class GridView {
     private final GridModel gridModel;
     private final GridController gridController;
     private TilePane numberPane;
     private final Label[][] numberSquares; // the tiles/squares to show in the ui grid
+    private final Font fontBold;
+    private final Font fontNormal;
 
     public GridView(GridModel gridModel, GridController gridController) {
         this.gridModel = gridModel;
         this.gridController = gridController;
         numberSquares = new Label[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
+        fontBold = Font.font("Monospaced", FontWeight.BOLD, 20);
+        fontNormal = Font.font("Monospaced", FontWeight.NORMAL, 20);
         initNumberSquares();
         makeNumberPane();
     }
@@ -38,10 +44,19 @@ public class GridView {
         }
     }
 
+    public void updateNumberSquaresFont() {
+        for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
+            for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
+                if(Objects.equals(numberSquares[row][column].getText(), " "))
+                    numberSquares[row][column].setFont(fontNormal);
+                else
+                    numberSquares[row][column].setFont(fontBold);
+            }
+        }
+    }
+
     // called by constructor (only)
     private final void initNumberSquares() {
-        Font font = Font.font("Monospaced", FontWeight.NORMAL, 20);
-
         EventHandler<MouseEvent> squareHandler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -61,7 +76,10 @@ public class GridView {
                 Label square = new Label(squareNumberToString(row, col)); // data from model
                 square.setPrefWidth(32);
                 square.setPrefHeight(32);
-                square.setFont(font);
+                if(Objects.equals(square.getText(), " "))
+                    square.setFont(fontNormal);
+                else 
+                    square.setFont(fontBold);
                 square.setAlignment(Pos.CENTER);
                 square.setStyle("-fx-border-color: black; -fx-border-width: 0.5px;"); // css style
                 //tile.setOnMouseClicked(tileClickHandler); // add your custom event handler

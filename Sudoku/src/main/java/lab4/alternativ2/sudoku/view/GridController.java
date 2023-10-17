@@ -53,7 +53,7 @@ public class GridController {
             sudokuView.showAlert(Alert.AlertType.ERROR, "Error", "IO problem", content);
         }
         sudokuView.getGridView().updateGridView();
-
+        sudokuView.getGridView().updateNumberSquaresFont();
         checkGameFinished();
     }
 
@@ -71,11 +71,13 @@ public class GridController {
     public void handleNewGame() {
         gridModel.initNewGame();
         sudokuView.getGridView().updateGridView();
+        sudokuView.getGridView().updateNumberSquaresFont();
     }
 
     public void handleSelectNewLevel(SudokuUtilities.SudokuLevel level) {
         gridModel.setLevel(level);
         sudokuView.getGridView().updateGridView();
+        sudokuView.getGridView().updateNumberSquaresFont();
     }
 
     public void handleStartOver() {
