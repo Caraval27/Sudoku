@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/io/SudokuFileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/io/SudokuFileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/Square.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="lab4.alternativ2.sudoku" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />

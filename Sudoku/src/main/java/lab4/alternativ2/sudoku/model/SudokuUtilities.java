@@ -2,7 +2,7 @@ package lab4.alternativ2.sudoku.model;
 
 /**
  *  The class contains the utilities to create a sudoku matrix.
- *  The matrix is created by converting a string an int matrix.
+ *  The matrix is created by converting a string to an int matrix.
  *  The matrix looks different every time a new game starts due to the methods that flips it vertically or horizontal
  *  as well as switching places of numbers.
  */
@@ -100,10 +100,10 @@ public class SudokuUtilities {
     }
 
     /**
-     * Returns a random number between the range of max and min.
-     * @param max integer representing the max range.
-     * @param min integer representing the min range.
-     * @return the int value of the generated number between the ranges.
+     * Returns a random number within the range between max and min.
+     * @param max integer representing the max number.
+     * @param min integer representing the min number.
+     * @return the int value of the generated number within the range.
      */
     public static int generateRandomNumber(int max, int min) {
         return (int) (Math.random() * (max - min + 1) + min);
