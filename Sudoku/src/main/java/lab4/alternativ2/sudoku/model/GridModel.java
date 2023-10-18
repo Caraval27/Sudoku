@@ -52,11 +52,12 @@ public class GridModel {
         initNewGame();
     }
 
-    public void setSelectedSquare(int value, int row, int column) {
+    public void setSelectedSquare(int value, int row, int column) throws IllegalStateException {
         Square square = squares[row][column];
-        if (square.isChangeable()) {
-            square.setSelectedNumber(value);
+        if (!square.isChangeable()) {
+            throw new IllegalStateException();
         }
+        square.setSelectedNumber(value);
     }
 
     public void setSquares(Square[][] squares) {
@@ -73,7 +74,9 @@ public class GridModel {
         }
     }
 
-    public void setCorrectSquare() {
+    public void setCorrectSquare() throws IllegalStateException {
+        if(allSquaresSelected()) throw new IllegalStateException();
+
         int row, column;
         Square square;
         do {

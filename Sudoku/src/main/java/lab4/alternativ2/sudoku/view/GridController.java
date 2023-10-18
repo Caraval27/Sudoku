@@ -102,9 +102,14 @@ public class GridController {
     }
 
     public void handleHint() {
-        gridModel.setCorrectSquare();
-        sudokuView.getGridView().updateGridView();
-        checkGameFinished();
+        String content = "This game is done, no more hints can be provided";
+        try {
+            gridModel.setCorrectSquare();
+            checkGameFinished();
+            sudokuView.getGridView().updateGridView();
+        } catch (IllegalStateException ise) {
+            sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid hint", content);
+        }
     }
 
     public void handleNumbers(int selectedNumber) {
@@ -112,7 +117,12 @@ public class GridController {
     }
 
     public void handleSquares(int row, int column) {
-        gridModel.setSelectedSquare(selectedNumber, row, column);
+        String content = "The number can not be cleared or replaced";
+        try {
+            gridModel.setSelectedSquare(selectedNumber, row, column);
+        } catch (IllegalStateException ise) {
+            sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid move", content);
+        }
         sudokuView.getGridView().updateGridView();
         checkGameFinished();
     }
