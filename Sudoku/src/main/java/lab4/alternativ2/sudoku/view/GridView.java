@@ -28,7 +28,7 @@ public class GridView {
         createNumberPane();
     }
 
-    // use this method to get a reference to the number (called by some other class)
+    // use this method to get a reference to the numberPane (called by some other class)
     public TilePane getNumberPane() {
         return numberPane;
     }
@@ -71,7 +71,7 @@ public class GridView {
         };
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int col = 0; col < SudokuUtilities.GRID_SIZE; col++) {
-                Label square = new Label(squareNumberToString(row, col)); // data from model
+                Label square = new Label(squareNumberToString(row, col));
                 square.setPrefWidth(32);
                 square.setPrefHeight(32);
                 if(Objects.equals(square.getText(), " ")) {
@@ -89,7 +89,7 @@ public class GridView {
 
     private String squareNumberToString(int row, int column) {
         String stringNumber;
-        Square[][] squares = gridModel.getSquares();
+        Square[][] squares = gridModel.getSquares(); // data from model
         int number = squares[row][column].getSelectedNumber();
 
         if (number == 0) {
