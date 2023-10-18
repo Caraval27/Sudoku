@@ -7,15 +7,15 @@ import lab4.alternativ2.sudoku.view.SudokuView;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) {
-        SudokuView sudokuView = new SudokuView(primaryStage);
+    public void start(Stage stage) {
+        SudokuView sudokuView = new SudokuView(stage);
 
         Scene scene = new Scene(sudokuView.getRootPane());
-        primaryStage.setTitle("Sudoku");
-        primaryStage.sizeToScene();
-        primaryStage.setResizable(false);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Sudoku");
+        stage.sizeToScene();
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void main(String[] args) {
