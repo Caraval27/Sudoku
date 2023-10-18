@@ -69,14 +69,17 @@ public class GridModel {
     public void clearSelectedSquares() {
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                setSelectedSquare(0, row, column);
+                if (squares[row][column].isChangeable()) {
+                    setSelectedSquare(0, row, column);
+                }
             }
         }
     }
 
     public void setCorrectSquare() throws IllegalStateException {
-        if(allSquaresSelected()) throw new IllegalStateException();
-
+        if (allSquaresSelected()) {
+            throw new IllegalStateException();
+        }
         int row, column;
         Square square;
         do {

@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Java - Laboration4.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/GridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/GridModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +35,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/MyCodes/Java - Laboration3/delB",
+    "last_opened_file_path": "C:/Users/Olivia Hultman/Documents/objektorienterad_programmering/l4/Lab4/sudoku",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -41,7 +45,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />
-      <module name="Sudoku" />
+      <module name="sudoku" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lab4.alternativ2.sudoku.*" />

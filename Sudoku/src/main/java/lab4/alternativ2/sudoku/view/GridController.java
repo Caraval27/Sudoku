@@ -102,12 +102,12 @@ public class GridController {
     }
 
     public void handleHint() {
-        String content = "This game is done, no more hints can be provided";
         try {
             gridModel.setCorrectSquare();
             checkGameFinished();
             sudokuView.getGridView().updateGridView();
-        } catch (IllegalStateException ise) {
+        } catch (IllegalStateException illegalStateException) {
+            String content = "Hints can not be provided when the game is finished.";
             sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid hint", content);
         }
     }
@@ -117,11 +117,11 @@ public class GridController {
     }
 
     public void handleSquares(int row, int column) {
-        String content = "The number can not be cleared or replaced";
         try {
             gridModel.setSelectedSquare(selectedNumber, row, column);
-        } catch (IllegalStateException ise) {
-            sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid move", content);
+        } catch (IllegalStateException illegalStateException) {
+            String content = "Original numbers can not be cleared or replaced.";
+            sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid square", content);
         }
         sudokuView.getGridView().updateGridView();
         checkGameFinished();
