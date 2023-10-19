@@ -43,7 +43,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />
-      <module name="sudoku" />
+      <module name="Sudoku" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lab4.alternativ2.sudoku.*" />

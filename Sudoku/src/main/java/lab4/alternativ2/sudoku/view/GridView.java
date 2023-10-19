@@ -12,15 +12,15 @@ import java.util.Objects;
 
 public class GridView {
     private final GridModel gridModel;
-    private final SudokuView sudokuView;
+    private final GridController gridController;
     private TilePane numberPane;
     private final Label[][] numberSquares; // the tiles/squares to show in the ui grid
     private final Font fontBold;
     private final Font fontNormal;
 
-    public GridView(GridModel gridModel, SudokuView sudokuView) {
+    public GridView(GridModel gridModel, GridController gridController) {
         this.gridModel = gridModel;
-        this.sudokuView = sudokuView;
+        this.gridController = gridController;
         numberSquares = new Label[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         fontBold = Font.font("Monospaced", FontWeight.BOLD, 20);
         fontNormal = Font.font("Monospaced", FontWeight.NORMAL, 20);
@@ -63,7 +63,7 @@ public class GridView {
                     for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
                         if (mouseEvent.getSource() == numberSquares[row][column]) {
                             // we got the row and column - now call the appropriate controller method, e.g.
-                            sudokuView.getGridController().handleSquares(row, column);
+                            gridController.handleSquares(row, column);
                             return;
                         }
                     }

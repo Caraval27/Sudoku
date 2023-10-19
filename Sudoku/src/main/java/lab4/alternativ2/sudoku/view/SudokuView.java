@@ -37,7 +37,7 @@ public class SudokuView {
         helpButtonPane = new VBox();
         gamePane.setLeft(helpButtonPane);
 
-        gridView = new GridView(gridModel, this);
+        gridView = new GridView(gridModel, gridController);
         gamePane.setCenter(gridView.getNumberPane());
 
         numberButtonPane = new VBox();
@@ -46,10 +46,6 @@ public class SudokuView {
         createButtons();
 
         createFileChooser();
-    }
-
-    public GridController getGridController() {
-        return gridController;
     }
 
     public VBox getRootPane() {
