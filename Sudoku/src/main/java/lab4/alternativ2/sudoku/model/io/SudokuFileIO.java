@@ -1,4 +1,4 @@
-package lab4.alternativ2.sudoku.io;
+package lab4.alternativ2.sudoku.model.io;
 
 import lab4.alternativ2.sudoku.model.Square;
 import java.io.*;

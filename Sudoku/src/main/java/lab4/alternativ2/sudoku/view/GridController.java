@@ -3,7 +3,7 @@ package lab4.alternativ2.sudoku.view;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lab4.alternativ2.sudoku.model.*;
-import lab4.alternativ2.sudoku.io.SudokuFileIO;
+import lab4.alternativ2.sudoku.model.io.SudokuFileIO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
