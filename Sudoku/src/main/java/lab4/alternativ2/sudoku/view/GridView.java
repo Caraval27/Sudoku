@@ -42,9 +42,10 @@ public class GridView {
     }
 
     public void updateNumberSquaresFont() {
+        Square[][] squares = gridModel.getSquares();
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
-                if(Objects.equals(numberSquares[row][column].getText(), " ")) {
+                if (squares[row][column].isChangeable()) {
                     numberSquares[row][column].setFont(fontNormal);
                 } else {
                     numberSquares[row][column].setFont(fontBold);
