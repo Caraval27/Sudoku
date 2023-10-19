@@ -47,7 +47,7 @@ public class GridModel {
 
     /**
      * Creates new squares, that differ from the previous squares, with correct numbers and originally selected numbers,
-     * which also indicate whether it's changeable or not.
+     * which also indicate whether they're changeable or not.
      */
     public void initNewGame() {
         int[][][] numbers;
