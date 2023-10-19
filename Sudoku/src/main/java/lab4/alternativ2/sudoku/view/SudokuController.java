@@ -8,28 +8,28 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class GridController {
-    private final GridModel gridModel;
+public class SudokuController {
+    private final SudokuModel sudokuModel;
     private final SudokuView sudokuView;
     private File sudokuFile;
     private int selectedNumber;
 
-    public GridController(GridModel gridModel, SudokuView sudokuView) {
-        this.gridModel = gridModel;
+    public SudokuController(SudokuModel sudokuModel, SudokuView sudokuView) {
+        this.sudokuModel = sudokuModel;
         this.sudokuView = sudokuView;
     }
 
     private void checkGameFinished() {
-        if (gridModel.allSquaresSelected()) {
+        if (sudokuModel.allSquaresSelected()) {
             String header = "Level ";
-            switch(gridModel.getLevel()) {
+            switch(sudokuModel.getLevel()) {
                 case EASY -> header += "easy";
                 case MEDIUM -> header += "medium";
                 case HARD -> header += "hard";
             }
             header += " finished";
             String content = "Numbers selected are ";
-            if (gridModel.checkSquares()) {
+            if (sudokuModel.checkSquares()) {
                 content += "correct.";
             } else {
                 content += "incorrect.";
@@ -45,7 +45,7 @@ public class GridController {
         try {
             if (sudokuFile.exists()) {
                 Square[][] squares = SudokuFileIO.deSerializeFromFile(sudokuFile);
-                gridModel.setSquares(squares);
+                sudokuModel.setSquares(squares);
             }
         } catch (FileNotFoundException | ClassNotFoundException ioException) {
             content = "Could not load sudoku game from file, please check the file.";
@@ -62,7 +62,7 @@ public class GridController {
     public void handleSaveGame(Stage stage) {
         sudokuFile = sudokuView.getFileChooser().showSaveDialog(stage);
         try {
-            Square[][] squares = gridModel.getSquares();
+            Square[][] squares = sudokuModel.getSquares();
             SudokuFileIO.serializeToFile(sudokuFile, squares);
         } catch (IOException ioException) {
             String message = "There is a problem with the serialization to the file.";
@@ -71,29 +71,29 @@ public class GridController {
     }
 
     public void handleNewGame() {
-        gridModel.initNewGame();
+        sudokuModel.initNewGame();
         sudokuView.getGridView().updateGridView();
         sudokuView.getGridView().updateNumberSquaresFont();
     }
 
     public void handleSelectNewLevel(SudokuUtilities.SudokuLevel level) {
-        gridModel.setLevel(level);
+        sudokuModel.setLevel(level);
         sudokuView.getGridView().updateGridView();
         sudokuView.getGridView().updateNumberSquaresFont();
     }
 
     public void handleStartOver() {
-        gridModel.clearSelectedSquares();
+        sudokuModel.clearSelectedSquares();
         sudokuView.getGridView().updateGridView();
     }
 
     public void handleGameRules() {
-        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", gridModel.getRules());
+        sudokuView.showAlert(Alert.AlertType.INFORMATION, "Help", "Game rules", sudokuModel.getRules());
     }
 
     public void handleCheck() {
         String content = "Numbers selected so far are ";
-        if (gridModel.checkSquares()) {
+        if (sudokuModel.checkSquares()) {
             content += "correct.";
         } else {
             content += "incorrect.";
@@ -103,7 +103,7 @@ public class GridController {
 
     public void handleHint() {
         try {
-            gridModel.setCorrectSquare();
+            sudokuModel.setCorrectSquare();
             checkGameFinished();
             sudokuView.getGridView().updateGridView();
         } catch (IllegalStateException illegalStateException) {
@@ -118,7 +118,7 @@ public class GridController {
     
     public void handleSquares(int row, int column) {
         try {
-            gridModel.setSelectedSquare(selectedNumber, row, column);
+            sudokuModel.setSelectedSquare(selectedNumber, row, column);
         } catch (IllegalStateException illegalStateException) {
             String content = "Original numbers can not be cleared or replaced.";
             sudokuView.showAlert(Alert.AlertType.WARNING, "Warning", "Invalid square", content);

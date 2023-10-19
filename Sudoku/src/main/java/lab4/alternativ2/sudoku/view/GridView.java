@@ -11,16 +11,16 @@ import lab4.alternativ2.sudoku.model.*;
 import java.util.Objects;
 
 public class GridView {
-    private final GridModel gridModel;
-    private final GridController gridController;
+    private final SudokuModel sudokuModel;
+    private final SudokuController sudokuController;
     private TilePane numberPane;
     private final Label[][] numberSquares; // the tiles/squares to show in the ui grid
     private final Font fontBold;
     private final Font fontNormal;
 
-    public GridView(GridModel gridModel, GridController gridController) {
-        this.gridModel = gridModel;
-        this.gridController = gridController;
+    public GridView(SudokuModel sudokuModel, SudokuController sudokuController) {
+        this.sudokuModel = sudokuModel;
+        this.sudokuController = sudokuController;
         numberSquares = new Label[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         fontBold = Font.font("Monospaced", FontWeight.BOLD, 20);
         fontNormal = Font.font("Monospaced", FontWeight.NORMAL, 20);
@@ -42,7 +42,7 @@ public class GridView {
     }
 
     public void updateNumberSquaresFont() {
-        Square[][] squares = gridModel.getSquares();
+        Square[][] squares = sudokuModel.getSquares();
         for (int row = 0; row < SudokuUtilities.GRID_SIZE; row++) {
             for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
                 if (squares[row][column].isChangeable()) {
@@ -63,7 +63,7 @@ public class GridView {
                     for (int column = 0; column < SudokuUtilities.GRID_SIZE; column++) {
                         if (mouseEvent.getSource() == numberSquares[row][column]) {
                             // we got the row and column - now call the appropriate controller method, e.g.
-                            gridController.handleSquares(row, column);
+                            sudokuController.handleSquares(row, column);
                             return;
                         }
                     }
@@ -90,7 +90,7 @@ public class GridView {
 
     private String squareNumberToString(int row, int column) {
         String stringNumber;
-        Square[][] squares = gridModel.getSquares(); // data from model
+        Square[][] squares = sudokuModel.getSquares(); // data from model
         int number = squares[row][column].getSelectedNumber();
 
         if (number == 0) {

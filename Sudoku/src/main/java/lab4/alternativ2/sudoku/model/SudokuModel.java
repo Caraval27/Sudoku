@@ -3,14 +3,14 @@ package lab4.alternativ2.sudoku.model;
 /**
  * Represents a grid with squares at a certain level.
  */
-public class GridModel {
+public class SudokuModel {
     private final Square[][] squares;
     private SudokuUtilities.SudokuLevel level;
 
     /**
      * Creates a new grid with 9*9 squares at the default level medium and initiates a new game.
      */
-    public GridModel() {
+    public SudokuModel() {
         squares = new Square[SudokuUtilities.GRID_SIZE][SudokuUtilities.GRID_SIZE];
         level = SudokuUtilities.SudokuLevel.MEDIUM;
         initNewGame();

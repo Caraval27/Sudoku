@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e45beee2-3831-454f-b214-1c93d6f8b7db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/GridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/model/SudokuModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/GridView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab4/alternativ2/sudoku/view/SudokuView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,19 +28,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Olivia Hultman/Documents/objektorienterad_programmering/l4/Lab4/sudoku&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Olivia Hultman/Documents/objektorienterad_programmering/l4/Lab4/sudoku",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="lab4.alternativ2.sudoku.model" />
@@ -45,7 +51,7 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4.alternativ2.sudoku.Main" />
-      <module name="sudoku" />
+      <module name="Sudoku" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lab4.alternativ2.sudoku.*" />

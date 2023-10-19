@@ -9,11 +9,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import lab4.alternativ2.sudoku.model.GridModel;
+import lab4.alternativ2.sudoku.model.SudokuModel;
 import lab4.alternativ2.sudoku.model.SudokuUtilities;
 
 public class SudokuView {
-    private final GridController gridController;
+    private final SudokuController sudokuController;
     private final Stage stage;
     private final VBox rootPane;
     private MenuBar menuBar;
@@ -23,8 +23,8 @@ public class SudokuView {
     private FileChooser fileChooser;
 
     public SudokuView(Stage stage) {
-        GridModel gridModel = new GridModel();
-        gridController = new GridController(gridModel, this);
+        SudokuModel sudokuModel = new SudokuModel();
+        sudokuController = new SudokuController(sudokuModel, this);
 
         this.stage = stage;
 
@@ -37,7 +37,7 @@ public class SudokuView {
         helpButtonPane = new VBox();
         gamePane.setLeft(helpButtonPane);
 
-        gridView = new GridView(gridModel, gridController);
+        gridView = new GridView(sudokuModel, sudokuController);
         gamePane.setCenter(gridView.getNumberPane());
 
         numberButtonPane = new VBox();
@@ -84,7 +84,7 @@ public class SudokuView {
         EventHandler<ActionEvent> loadGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleLoadGame(stage);
+                sudokuController.handleLoadGame(stage);
             }
         };
         loadGameItem.addEventHandler(ActionEvent.ACTION, loadGameHandler);
@@ -92,7 +92,7 @@ public class SudokuView {
         EventHandler<ActionEvent> saveGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleSaveGame(stage);
+                sudokuController.handleSaveGame(stage);
             }
         };
         saveGameItem.addEventHandler(ActionEvent.ACTION, saveGameHandler);
@@ -116,7 +116,7 @@ public class SudokuView {
         EventHandler<ActionEvent> newGameHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNewGame();
+                sudokuController.handleNewGame();
             }
         };
         newGameItem.addEventHandler(ActionEvent.ACTION, newGameHandler);
@@ -124,7 +124,7 @@ public class SudokuView {
         EventHandler<ActionEvent> easyLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.EASY);
+                sudokuController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.EASY);
             }
         };
         easyLevelItem.addEventHandler(ActionEvent.ACTION, easyLevelHandler);
@@ -132,7 +132,7 @@ public class SudokuView {
         EventHandler<ActionEvent> mediumLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
+                sudokuController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.MEDIUM);
             }
         };
         mediumLevelItem.addEventHandler(ActionEvent.ACTION, mediumLevelHandler);
@@ -140,7 +140,7 @@ public class SudokuView {
         EventHandler<ActionEvent> hardLevelHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.HARD);
+                sudokuController.handleSelectNewLevel(SudokuUtilities.SudokuLevel.HARD);
             }
         };
         hardLevelItem.addEventHandler(ActionEvent.ACTION, hardLevelHandler);
@@ -155,7 +155,7 @@ public class SudokuView {
         EventHandler<ActionEvent> startOverHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleStartOver();
+                sudokuController.handleStartOver();
             }
         };
         startOverItem.addEventHandler(ActionEvent.ACTION, startOverHandler);
@@ -163,7 +163,7 @@ public class SudokuView {
         EventHandler<ActionEvent> gameRulesHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleGameRules();
+                sudokuController.handleGameRules();
             }
         };
         gameRulesItem.addEventHandler(ActionEvent.ACTION, gameRulesHandler);
@@ -181,7 +181,7 @@ public class SudokuView {
         EventHandler<ActionEvent> checkHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleCheck();
+                sudokuController.handleCheck();
             }
         };
         checkButton.addEventHandler(ActionEvent.ACTION, checkHandler);
@@ -189,7 +189,7 @@ public class SudokuView {
         EventHandler<ActionEvent> hintHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleHint();
+                sudokuController.handleHint();
             }
         };
         hintButton.addEventHandler(ActionEvent.ACTION, hintHandler);
@@ -202,7 +202,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number1Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(1);
+                sudokuController.handleNumbers(1);
             }
         };
         number1Button.addEventHandler(ActionEvent.ACTION, number1Handler);
@@ -210,7 +210,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number2Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(2);
+                sudokuController.handleNumbers(2);
             }
         };
         number2Button.addEventHandler(ActionEvent.ACTION, number2Handler);
@@ -218,7 +218,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number3Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(3);
+                sudokuController.handleNumbers(3);
             }
         };
         number3Button.addEventHandler(ActionEvent.ACTION, number3Handler);
@@ -226,7 +226,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number4Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(4);
+                sudokuController.handleNumbers(4);
             }
         };
         number4Button.addEventHandler(ActionEvent.ACTION, number4Handler);
@@ -234,7 +234,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number5Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(5);
+                sudokuController.handleNumbers(5);
             }
         };
         number5Button.addEventHandler(ActionEvent.ACTION, number5Handler);
@@ -242,7 +242,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number6Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(6);
+                sudokuController.handleNumbers(6);
             }
         };
         number6Button.addEventHandler(ActionEvent.ACTION, number6Handler);
@@ -250,7 +250,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number7Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(7);
+                sudokuController.handleNumbers(7);
             }
         };
         number7Button.addEventHandler(ActionEvent.ACTION, number7Handler);
@@ -258,7 +258,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number8Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(8);
+                sudokuController.handleNumbers(8);
             }
         };
         number8Button.addEventHandler(ActionEvent.ACTION, number8Handler);
@@ -266,7 +266,7 @@ public class SudokuView {
         EventHandler<ActionEvent> number9Handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(9);
+                sudokuController.handleNumbers(9);
             }
         };
         number9Button.addEventHandler(ActionEvent.ACTION, number9Handler);
@@ -274,7 +274,7 @@ public class SudokuView {
         EventHandler<ActionEvent> clearHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                gridController.handleNumbers(0);
+                sudokuController.handleNumbers(0);
             }
         };
         clearButton.addEventHandler(ActionEvent.ACTION, clearHandler);
