@@ -24,7 +24,7 @@ public class SudokuUtilities {
      * @return A 3-dimensional int matrix.
      * [row][col][0] represents the initial values, zero representing an empty cell.
      * [row][col][1] represents the solution.
-     * @throws IllegalArgumentException if the length of stringRepresentation is not 2*81 characters and
+     * @throws IllegalArgumentException If the length of stringRepresentation is not 2*81 characters and
      *                                  for characters other than '0'-'9'.
      */
     public static int[][][] generateSudokuMatrix(SudokuLevel level) {
@@ -51,7 +51,7 @@ public class SudokuUtilities {
      * Fills A 3-dimensional int matrix.
      * [row][col][0] represents the initial numbers, zero representing an empty cell.
      * [row][col][1] represents the solution.
-     * @throws IllegalArgumentException if the length of stringRepresentation is not 2*81 characters and
+     * @throws IllegalArgumentException If the length of stringRepresentation is not 2*81 characters and
      *                                  for characters other than '0'-'9'.
      */
     /*package private*/
@@ -101,9 +101,9 @@ public class SudokuUtilities {
 
     /**
      * Returns a random number within the range between max and min.
-     * @param max integer representing the max number.
-     * @param min integer representing the min number.
-     * @return the int value of the generated number within the range.
+     * @param max Integer representing the max number.
+     * @param min Integer representing the min number.
+     * @return The int value of the generated number within the range.
      */
     public static int generateRandomNumber(int max, int min) {
         return (int) (Math.random() * (max - min + 1) + min);
