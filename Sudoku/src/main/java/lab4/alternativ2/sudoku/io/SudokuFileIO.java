@@ -10,6 +10,7 @@ import java.io.*;
  * if the serialized objects class, Square, was not found.
  */
 public class SudokuFileIO {
+
     /**
      * Serializes a 2D array of Square objects to a specified file, if the file already exists,
      * it will be overwritten.
