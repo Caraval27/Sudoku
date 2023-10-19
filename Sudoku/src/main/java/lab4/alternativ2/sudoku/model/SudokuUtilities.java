@@ -95,7 +95,6 @@ public class SudokuUtilities {
             case 1 -> flipNumbersHorizontal(numbers);
             case 2 -> flipNumbersVertical(numbers);
             case 3 -> replaceNumbers(numbers);
-            default -> replaceNumbers(numbers);
         }
     }
 

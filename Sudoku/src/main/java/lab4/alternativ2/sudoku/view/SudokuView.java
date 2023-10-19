@@ -282,6 +282,8 @@ public class SudokuView {
             }
         };
         clearButton.addEventHandler(ActionEvent.ACTION, clearHandler);
-        numberButtonPane.getChildren().addAll(number1Button, number2Button, number3Button, number4Button, number5Button, number6Button, number7Button, number8Button, number9Button, clearButton);
+        numberButtonPane.getChildren().addAll(number1Button, number2Button, number3Button, number4Button);
+        numberButtonPane.getChildren().addAll(number5Button, number6Button, number7Button, number8Button);
+        numberButtonPane.getChildren().addAll(number9Button, clearButton);
     }
 }

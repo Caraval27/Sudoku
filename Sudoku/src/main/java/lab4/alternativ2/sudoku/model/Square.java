@@ -60,6 +60,7 @@ public class Square implements Serializable {
      */
     @Override
     public String toString() {
-        return "Square [correctNumber: " + correctNumber + ", selectedNumber: " + selectedNumber + ", changeable: " + changeable + ']';
+        return "Square [correctNumber: " + correctNumber + ", selectedNumber: " + selectedNumber + ", changeable: " +
+                changeable + ']';
     }
 }
